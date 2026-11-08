@@ -1,0 +1,2154 @@
+<!DOCTYPE html>
+<html lang="vi">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>SKY-LINE VĂN HỌC SPARK | Trạm Ôn Tập & Đấu Trường Ngữ Văn AI (Khối 6 & 9)</title>
+    <!-- Tailwind CSS -->
+    <script src="https://cdn.tailwindcss.com"></script>
+    <!-- Google Fonts: Be Vietnam Pro -->
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Be+Vietnam+Pro:ital,wght@0,300;0,400;0,500;0,600;0,700;0,800;1,400&display=swap" rel="stylesheet">
+    <!-- Font Awesome Icons -->
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.1/css/all.min.css">
+
+    <script>
+        tailwind.config = {
+            theme: {
+                extend: {
+                    fontFamily: {
+                        sans: ['"Be Vietnam Pro"', 'sans-serif'],
+                    },
+                    colors: {
+                        cyber: {
+                            950: '#020617',
+                            900: '#090f26',
+                            800: '#111c44',
+                            cyan: '#00f2fe',
+                            purple: '#c084fc',
+                            amber: '#fbbf24'
+                        }
+                    }
+                }
+            }
+        }
+    </script>
+
+    <style>
+        body {
+            font-family: 'Be Vietnam Pro', sans-serif;
+            background: radial-gradient(circle at 50% 0%, #0f172a 0%, #050816 60%, #020617 100%);
+            color: #f8fafc;
+            min-height: 100vh;
+        }
+
+        /* 3D Flashcard Flip Effects */
+        .perspective-1000 {
+            perspective: 1000px;
+        }
+        .transform-style-3d {
+            transform-style: preserve-3d;
+            transition: transform 0.6s cubic-bezier(0.4, 0.2, 0.2, 1);
+        }
+        .backface-hidden {
+            backface-visibility: hidden;
+            -webkit-backface-visibility: hidden;
+        }
+        .rotate-y-180 {
+            transform: rotateY(180deg);
+        }
+        .flipped {
+            transform: rotateY(180deg);
+        }
+
+        /* Sci-Fi Neon Borders */
+        .neon-card-cyan {
+            border: 1px solid rgba(34, 211, 238, 0.35);
+            box-shadow: 0 0 22px rgba(34, 211, 238, 0.08), inset 0 0 12px rgba(34, 211, 238, 0.05);
+        }
+        .neon-card-purple {
+            border: 1px solid rgba(192, 132, 252, 0.4);
+            box-shadow: 0 0 22px rgba(192, 132, 252, 0.1), inset 0 0 12px rgba(192, 132, 252, 0.05);
+        }
+        .neon-card-amber {
+            border: 1px solid rgba(251, 191, 36, 0.4);
+            box-shadow: 0 0 22px rgba(251, 191, 36, 0.1);
+        }
+
+        @keyframes floatSlow {
+            0%, 100% { transform: translateY(0px); }
+            50% { transform: translateY(-6px); }
+        }
+        .animate-float {
+            animation: floatSlow 3.5s ease-in-out infinite;
+        }
+
+        /* Custom Scrollbar */
+        ::-webkit-scrollbar {
+            width: 7px;
+            height: 7px;
+        }
+        ::-webkit-scrollbar-track {
+            background: #090f26;
+        }
+        ::-webkit-scrollbar-thumb {
+            background: #1e293b;
+            border-radius: 9999px;
+            border: 1px solid rgba(34, 211, 238, 0.3);
+        }
+        ::-webkit-scrollbar-thumb:hover {
+            background: #06b6d4;
+        }
+    </style>
+</head>
+<body class="antialiased selection:bg-cyan-400 selection:text-slate-950 pb-16">
+
+    <!-- TOP SAFETY & COMPETITION COMPLIANCE BANNER -->
+    <div class="bg-slate-950/90 text-xs py-2 px-4 border-b border-cyan-500/30">
+        <div class="max-w-7xl mx-auto flex flex-wrap items-center justify-between gap-2">
+            <div class="flex items-center gap-2">
+                <span class="bg-gradient-to-r from-cyan-400 to-purple-500 text-slate-950 font-extrabold px-2.5 py-0.5 rounded text-[11px] uppercase tracking-wider">
+                    SKY-LINE AI SPARK 2026 - 2027
+                </span>
+                <span class="font-medium text-cyan-200">Bảng A • Nhóm Đột Phá • Ngữ Văn Khối 6 & Khối 9 (Kết nối tri thức)</span>
+            </div>
+            <div class="flex items-center gap-3 text-emerald-400 font-medium">
+                <span><i class="fa-solid fa-shield-halved mr-1"></i>Không cần tài khoản</span>
+                <span class="hidden md:inline">•</span>
+                <span class="hidden md:inline"><i class="fa-solid fa-user-secret mr-1"></i>Bảo mật dữ liệu HS 100%</span>
+                <button onclick="openSafetyModal()" class="underline hover:text-white text-cyan-300 ml-1">Cam kết 3 Không</button>
+            </div>
+        </div>
+    </div>
+
+    <!-- MAIN HEADER -->
+    <header class="bg-slate-950/85 backdrop-blur-md sticky top-0 z-30 border-b border-cyan-500/25 shadow-lg shadow-cyan-950/20">
+        <div class="max-w-7xl mx-auto px-4 sm:px-6 py-3.5 flex flex-wrap items-center justify-between gap-4">
+            <!-- Brand Title -->
+            <div class="flex items-center gap-3.5">
+                <div class="w-12 h-12 rounded-2xl bg-gradient-to-br from-cyan-400 via-blue-500 to-purple-600 p-0.5 shadow-lg shadow-cyan-500/25">
+                    <div class="w-full h-full bg-slate-950 rounded-[14px] flex items-center justify-center text-cyan-300 font-extrabold text-xl">
+                        <i class="fa-solid fa-feather-pointed"></i>
+                    </div>
+                </div>
+                <div>
+                    <div class="flex items-center gap-2">
+                        <h1 id="appSubjectTitle" class="text-lg sm:text-xl font-extrabold bg-gradient-to-r from-cyan-300 via-white to-purple-300 bg-clip-text text-transparent tracking-tight">
+                            TRẠM ÔN TẬP & ĐẤU TRƯỜNG NGỮ VĂN AI
+                        </h1>
+                        <span class="hidden sm:inline-block text-[11px] font-bold bg-cyan-500/15 text-cyan-300 px-2.5 py-0.5 rounded-full border border-cyan-400/30">
+                            Khối 6 & Khối 9
+                        </span>
+                    </div>
+                    <p id="appSubjectSubtitle" class="text-xs text-slate-400 font-medium mt-0.5">
+                        Trọng tâm: <strong class="text-cyan-300">Truyện đồng thoại (Lớp 6)</strong> & <strong class="text-purple-300">Truyện thơ Nôm (Lớp 9)</strong> • GDPT 2018
+                    </p>
+                </div>
+            </div>
+
+            <!-- Anonymous Codename & Spark Score -->
+            <div class="flex items-center gap-3 flex-wrap">
+                <!-- Anonymous Avatar Selector -->
+                <div class="flex items-center bg-slate-900/90 hover:bg-slate-800/90 transition rounded-xl p-1.5 border border-slate-700">
+                    <span id="currentAvatarIcon" class="w-8 h-8 rounded-lg bg-gradient-to-br from-cyan-400 to-blue-600 text-slate-950 flex items-center justify-center text-sm font-bold mr-2 shadow">
+                        🦗
+                    </span>
+                    <div class="pr-2">
+                        <div class="text-[10px] uppercase tracking-wider text-slate-400 font-bold leading-none">Biệt hiệu ẩn danh</div>
+                        <select id="codenameSelect" onchange="changeCodename(this.value)" class="bg-transparent text-xs sm:text-sm font-bold text-cyan-300 focus:outline-none cursor-pointer">
+                            <option value="🦗|Hiệp Sĩ Dế Mèn (K6)" class="bg-slate-900 text-white">Hiệp Sĩ Dế Mèn (K6)</option>
+                            <option value="⚔️|Danh Sĩ Lục Vân Tiên (K9)" class="bg-slate-900 text-white">Danh Sĩ Lục Vân Tiên (K9)</option>
+                            <option value="🪕|Tri Âm Truyện Kiều (K9)" class="bg-slate-900 text-white">Tri Âm Truyện Kiều (K9)</option>
+                            <option value="🐞|Thám Tử Xóm Bờ Giậu (K6)" class="bg-slate-900 text-white">Thám Tử Xóm Bờ Giậu (K6)</option>
+                            <option value="👑|Hoàng Tử Bé B612 (K6)" class="bg-slate-900 text-white">Hoàng Tử Bé B612 (K6)</option>
+                        </select>
+                    </div>
+                </div>
+
+                <!-- Spark Points -->
+                <div class="flex items-center gap-2 bg-amber-500/10 border border-amber-400/40 px-3.5 py-1.5 rounded-xl">
+                    <i class="fa-solid fa-bolt text-amber-400 text-lg"></i>
+                    <div>
+                        <div class="text-[10px] uppercase font-bold text-amber-300/80 leading-none">Điểm Tia Lửa</div>
+                        <div class="text-sm font-extrabold text-amber-300"><span id="headerSparkScore">0</span> Spark</div>
+                    </div>
+                </div>
+
+                <!-- Sound Button -->
+                <button id="soundToggleBtn" onclick="toggleSound()" title="Bật/Tắt âm thanh" class="w-10 h-10 rounded-xl bg-slate-900 hover:bg-slate-800 text-cyan-300 flex items-center justify-center border border-slate-700 transition">
+                    <i id="soundIcon" class="fa-solid fa-volume-high"></i>
+                </button>
+            </div>
+        </div>
+
+        <!-- GLOBAL GRADE & TOPIC QUICK FILTER BAR -->
+        <div class="bg-slate-900/80 border-t border-slate-800/80">
+            <div class="max-w-7xl mx-auto px-4 sm:px-6 py-2.5 flex flex-wrap items-center justify-between gap-2">
+                <div class="flex items-center gap-1.5 flex-wrap">
+                    <span class="text-xs font-bold text-slate-400 mr-1"><i class="fa-solid fa-filter text-cyan-400 mr-1"></i>Chuyên đề trọng tâm:</span>
+                    <button onclick="setGlobalFilter('ALL')" id="gFilter-ALL" class="g-filter-btn px-3 py-1.5 rounded-lg text-xs font-extrabold bg-cyan-400 text-slate-950 shadow-sm transition">
+                        Tất cả (Khối 6 & 9)
+                    </button>
+                    <button onclick="setGlobalFilter('K6_DONGTHOAI')" id="gFilter-K6_DONGTHOAI" class="g-filter-btn px-3 py-1.5 rounded-lg text-xs font-bold bg-slate-800 text-cyan-300 border border-cyan-500/30 hover:bg-slate-700 transition">
+                        🦗 Khối 6: Truyện đồng thoại (Mới)
+                    </button>
+                    <button onclick="setGlobalFilter('K6_OTHER')" id="gFilter-K6_OTHER" class="g-filter-btn px-3 py-1.5 rounded-lg text-xs font-semibold bg-slate-800 text-slate-300 hover:bg-slate-700 transition">
+                        📚 Khối 6: Truyền thuyết, Thơ & Tu từ
+                    </button>
+                    <button onclick="setGlobalFilter('K9_THONOM')" id="gFilter-K9_THONOM" class="g-filter-btn px-3 py-1.5 rounded-lg text-xs font-bold bg-slate-800 text-purple-300 border border-purple-500/30 hover:bg-slate-700 transition">
+                        🪕 Khối 9: Truyện thơ Nôm (Mới)
+                    </button>
+                    <button onclick="setGlobalFilter('K9_OTHER')" id="gFilter-K9_OTHER" class="g-filter-btn px-3 py-1.5 rounded-lg text-xs font-semibold bg-slate-800 text-slate-300 hover:bg-slate-700 transition">
+                        🕯️ Khối 9: Truyền kỳ, Thơ & Nghị luận
+                    </button>
+                </div>
+            </div>
+        </div>
+
+        <!-- 4 MAIN STATION TABS -->
+        <div class="max-w-7xl mx-auto px-4 sm:px-6 flex items-center justify-between border-t border-slate-800/80 overflow-x-auto">
+            <div class="flex space-x-2 py-2.5">
+                <button onclick="switchTab('review')" id="tabBtn-review" class="tab-btn flex items-center gap-2 px-4 py-2.5 rounded-xl font-extrabold text-xs sm:text-sm transition-all bg-gradient-to-r from-cyan-400 to-blue-500 text-slate-950 shadow-md shadow-cyan-500/20">
+                    <i class="fa-solid fa-layer-group"></i>
+                    <span>1. Trạm Thẻ Nhớ 3D</span>
+                    <span id="badgeFlashcardCount" class="bg-slate-950/25 text-slate-950 px-2 py-0.5 rounded-full text-xs font-black">18 thẻ</span>
+                </button>
+                <button onclick="switchTab('arena')" id="tabBtn-arena" class="tab-btn flex items-center gap-2 px-4 py-2.5 rounded-xl font-bold text-xs sm:text-sm transition-all text-slate-300 hover:bg-slate-800 border border-transparent">
+                    <i class="fa-solid fa-gamepad text-purple-400"></i>
+                    <span>2. Đấu Trường Giải Mã AI</span>
+                    <span class="bg-purple-500/20 text-purple-300 border border-purple-500/30 px-2 py-0.5 rounded-full text-xs font-extrabold">2 Game</span>
+                </button>
+                <button onclick="switchTab('ai-mentor')" id="tabBtn-ai-mentor" class="tab-btn flex items-center gap-2 px-4 py-2.5 rounded-xl font-bold text-xs sm:text-sm transition-all text-slate-300 hover:bg-slate-800 border border-transparent">
+                    <i class="fa-solid fa-comments text-amber-400"></i>
+                    <span>3. Đối Thoại 8 Nhân Vật AI</span>
+                    <span class="bg-amber-500/20 text-amber-300 border border-amber-500/30 px-2 py-0.5 rounded-full text-xs font-extrabold">48+ Gợi ý</span>
+                </button>
+                <button onclick="switchTab('teacher')" id="tabBtn-teacher" class="tab-btn flex items-center gap-2 px-4 py-2.5 rounded-xl font-bold text-xs sm:text-sm transition-all text-emerald-300 bg-emerald-950/50 hover:bg-emerald-900/60 border border-emerald-500/30">
+                    <i class="fa-solid fa-wand-magic-sparkles"></i>
+                    <span>4. Góc Giáo Viên (&lt;10p)</span>
+                </button>
+            </div>
+        </div>
+    </header>
+
+    <!-- MAIN CONTENT CONTAINER -->
+    <main class="max-w-7xl mx-auto px-4 sm:px-6 py-6 space-y-8">
+
+        <!-- ==========================================
+             TRẠM 1: THẺ NHỚ 3D (FLASHCARDS LẬT 3D)
+             ========================================== -->
+        <section id="tab-review" class="space-y-6">
+            <!-- Hero Card -->
+            <div class="bg-gradient-to-r from-slate-900 via-indigo-950/90 to-slate-900 rounded-3xl p-6 sm:p-8 neon-card-cyan relative overflow-hidden">
+                <div class="grid grid-cols-1 lg:grid-cols-3 gap-6 items-center relative z-10">
+                    <div class="lg:col-span-2 space-y-2.5">
+                        <div class="inline-flex items-center gap-2 bg-cyan-500/15 border border-cyan-400/30 px-3 py-1 rounded-full text-xs font-bold text-cyan-300">
+                            <i class="fa-solid fa-sparkles"></i> Đã bổ sung chuyên sâu: Truyện đồng thoại (Lớp 6) & Truyện thơ Nôm (Lớp 9)
+                        </div>
+                        <h2 class="text-2xl sm:text-3xl font-extrabold text-white leading-tight">
+                            Kho Thẻ Nhớ 3D Tri Thức Ngữ Văn & Tác Phẩm Trọng Tâm
+                        </h2>
+                        <p class="text-slate-300 text-sm leading-relaxed max-w-2xl">
+                            Chạm vào từng thẻ để lật xem <strong>Đặc trưng thể loại chuẩn SGK Kết nối tri thức</strong>, <strong>Dẫn chứng văn bản</strong> và <strong>Mẹo ghi nhớ siêu tốc của AI</strong>.
+                        </p>
+                    </div>
+                    <!-- Mastery Progress -->
+                    <div class="bg-slate-950/80 border border-cyan-500/30 rounded-2xl p-5 flex flex-col justify-between space-y-3">
+                        <div class="flex items-center justify-between">
+                            <span class="text-xs font-bold uppercase tracking-wider text-slate-400">Tiến độ thuộc bài</span>
+                            <span id="masteryFraction" class="text-sm font-extrabold text-cyan-300">0 / 18 thẻ</span>
+                        </div>
+                        <div class="w-full bg-slate-800 h-3 rounded-full overflow-hidden p-0.5">
+                            <div id="masteryProgressBar" class="bg-gradient-to-r from-cyan-400 via-purple-400 to-emerald-400 h-full rounded-full transition-all duration-500" style="width: 0%"></div>
+                        </div>
+                        <button onclick="switchTab('arena')" class="w-full py-2.5 bg-gradient-to-r from-cyan-400 to-purple-500 hover:opacity-95 text-slate-950 font-extrabold text-xs sm:text-sm rounded-xl shadow transition flex items-center justify-center gap-2">
+                            <i class="fa-solid fa-key"></i> Vào Đấu Trường Giải Mã Ngay
+                        </button>
+                    </div>
+                </div>
+            </div>
+
+            <!-- Search & Shuffle Bar -->
+            <div class="bg-slate-900/90 p-4 rounded-2xl border border-slate-800 flex flex-wrap items-center justify-between gap-4">
+                <div class="text-xs sm:text-sm font-bold text-cyan-300 flex items-center gap-2">
+                    <i class="fa-solid fa-layer-group"></i>
+                    <span id="currentFilterLabel">Đang hiển thị: Tất cả chuyên đề Khối 6 & Khối 9</span>
+                </div>
+                <div class="flex items-center gap-2 w-full sm:w-auto">
+                    <div class="relative flex-1 sm:w-72">
+                        <i class="fa-solid fa-magnifying-glass absolute left-3.5 top-1/2 -translate-y-1/2 text-slate-400 text-sm"></i>
+                        <input id="flashcardSearchInput" oninput="renderFlashcards()" type="text" placeholder="Tìm: đồng thoại, Dế Mèn, thơ Nôm, Kiều..." class="w-full pl-9 pr-4 py-2 bg-slate-950 border border-slate-700 rounded-xl text-xs sm:text-sm text-white focus:outline-none focus:border-cyan-400">
+                    </div>
+                    <button onclick="shuffleFlashcards()" class="px-3.5 py-2 bg-slate-800 hover:bg-slate-700 text-cyan-300 border border-slate-700 rounded-xl text-xs sm:text-sm font-bold transition flex items-center gap-1.5">
+                        <i class="fa-solid fa-shuffle"></i> Trộn thẻ
+                    </button>
+                </div>
+            </div>
+
+            <!-- 3D Flashcards Grid -->
+            <div id="flashcardsGrid" class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-6">
+                <!-- Populated by JS -->
+            </div>
+        </section>
+
+        <!-- ==========================================
+             TRẠM 2: ĐẤU TRƯỜNG GAME TƯƠNG TÁC (2 CHẾ ĐỘ)
+             ========================================== -->
+        <section id="tab-arena" class="hidden space-y-6">
+            <!-- Mode Switcher -->
+            <div class="bg-slate-900/90 rounded-3xl p-5 sm:p-6 neon-card-purple flex flex-wrap items-center justify-between gap-4">
+                <div>
+                    <span class="text-xs font-extrabold uppercase tracking-wider text-purple-300 bg-purple-500/20 px-2.5 py-1 rounded border border-purple-500/30">
+                        Đấu trường tương tác • Phản hồi tư duy tức thì
+                    </span>
+                    <h2 class="text-xl sm:text-2xl font-extrabold text-white mt-1.5">
+                        Đấu Trường Giải Mã Truyện Đồng Thoại (K6) & Truyện Thơ Nôm (K9)
+                    </h2>
+                </div>
+                <div class="flex gap-2 bg-slate-950 p-1.5 rounded-2xl border border-slate-800">
+                    <button id="modeBtn-escape" onclick="switchGameMode('escape')" class="px-4 py-2.5 rounded-xl font-extrabold text-xs sm:text-sm bg-gradient-to-r from-cyan-400 to-blue-500 text-slate-950 shadow transition flex items-center gap-2">
+                        <i class="fa-solid fa-dungeon"></i> Chế độ 1: Giải Mã Mật Thư (Escape Room)
+                    </button>
+                    <button id="modeBtn-speed" onclick="switchGameMode('speed')" class="px-4 py-2.5 rounded-xl font-bold text-xs sm:text-sm text-slate-300 hover:bg-slate-800 transition flex items-center gap-2">
+                        <i class="fa-solid fa-bolt text-amber-400"></i> Chế độ 2: Phân Loại Siêu Tốc (60s)
+                    </button>
+                </div>
+            </div>
+
+            <!-- GAME MODE 1: ESCAPE ROOM -->
+            <div id="gameMode-escape" class="grid grid-cols-1 lg:grid-cols-3 gap-6">
+                <!-- Left: Station Map -->
+                <div class="bg-slate-900/90 rounded-3xl p-6 neon-card-cyan flex flex-col justify-between space-y-6">
+                    <div class="space-y-4">
+                        <div class="flex items-center justify-between">
+                            <span class="text-xs uppercase font-bold tracking-wider text-cyan-300"><i class="fa-solid fa-map-location-dot mr-1"></i> Lộ trình trạm mật thư</span>
+                            <span id="escapeStreakBadge" class="bg-amber-500/20 border border-amber-400/40 text-amber-300 text-xs font-bold px-2.5 py-0.5 rounded-full">🔥 Chuỗi: 0</span>
+                        </div>
+                        <p class="text-xs text-slate-400 leading-relaxed">
+                            Mỗi trạm là một thử thách về <strong>Truyện đồng thoại (Khối 6)</strong>, <strong>Truyện thơ Nôm (Khối 9)</strong> và kỹ năng Tiếng Việt. Có thể lọc riêng khối lớp bằng thanh chọn phía trên!
+                        </p>
+                        <div id="escapeStationsList" class="space-y-2 max-h-[340px] overflow-y-auto pr-1">
+                            <!-- Populated by JS -->
+                        </div>
+                    </div>
+
+                    <div class="bg-slate-950/90 rounded-2xl p-4 border border-slate-800 text-center space-y-2">
+                        <div id="treasureChestIcon" class="text-4xl animate-float">🔒</div>
+                        <div id="treasureStatusText" class="text-xs font-bold text-cyan-300">Rương Báu Ngữ Văn Đang Khóa</div>
+                        <button onclick="restartEscapeGame()" class="text-xs text-purple-300 hover:text-white underline pt-1 inline-block">
+                            <i class="fa-solid fa-rotate-right mr-1"></i>Chơi lại từ Trạm 1
+                        </button>
+                    </div>
+                </div>
+
+                <!-- Right (2 cols): Active Question Area -->
+                <div class="lg:col-span-2 bg-slate-900/90 rounded-3xl p-6 sm:p-8 neon-card-purple flex flex-col justify-between">
+                    <div id="escapeActiveContainer" class="space-y-5">
+                        <div class="flex flex-wrap items-center justify-between gap-2 pb-4 border-b border-slate-800">
+                            <div class="flex items-center gap-2">
+                                <span id="escapeStationBadge" class="bg-cyan-500/20 text-cyan-300 border border-cyan-500/30 font-extrabold text-xs px-3 py-1 rounded-full">TRẠM 1</span>
+                                <span id="escapeTopicBadge" class="bg-purple-500/20 text-purple-300 border border-purple-500/30 font-bold text-xs px-3 py-1 rounded-full">Chuyên đề</span>
+                            </div>
+                            <button onclick="showEscapeHint()" class="text-xs font-bold text-amber-300 bg-amber-500/15 hover:bg-amber-500/25 border border-amber-400/40 px-3.5 py-1.5 rounded-xl transition flex items-center gap-1.5">
+                                <i class="fa-solid fa-lightbulb"></i> Xin gợi ý từ Trợ lý AI
+                            </button>
+                        </div>
+
+                        <!-- Literary Context -->
+                        <div id="escapeContextBox" class="bg-slate-950/90 border-l-4 border-cyan-400 p-4 rounded-r-2xl text-slate-200 text-xs sm:text-sm italic leading-relaxed"></div>
+
+                        <!-- Question Text -->
+                        <h3 id="escapeQuestionText" class="text-base sm:text-lg font-extrabold text-white leading-snug"></h3>
+
+                        <!-- AI Hint Box -->
+                        <div id="escapeHintBox" class="hidden bg-amber-500/10 border border-amber-400/40 rounded-2xl p-4 text-xs sm:text-sm text-amber-200 flex items-start gap-3">
+                            <div class="w-8 h-8 rounded-xl bg-amber-400 text-slate-950 flex items-center justify-center shrink-0 font-bold">
+                                <i class="fa-solid fa-robot"></i>
+                            </div>
+                            <div>
+                                <div class="font-bold text-amber-300 mb-0.5">Trợ lý AI gợi mở tư duy (Scaffolding):</div>
+                                <p id="escapeHintContent"></p>
+                            </div>
+                        </div>
+
+                        <!-- Options -->
+                        <div id="escapeOptionsGrid" class="grid grid-cols-1 gap-3"></div>
+
+                        <!-- Explanation Feedback -->
+                        <div id="escapeFeedbackBox" class="hidden rounded-2xl p-5 border space-y-3">
+                            <div class="flex items-center justify-between">
+                                <div id="escapeFeedbackTitle" class="font-extrabold text-sm sm:text-base flex items-center gap-2"></div>
+                                <span id="escapePointAward" class="text-xs font-extrabold px-2.5 py-1 rounded-full bg-slate-950 text-amber-300"></span>
+                            </div>
+                            <p id="escapeExplanationText" class="text-xs sm:text-sm leading-relaxed"></p>
+                            <div class="pt-2 flex justify-end">
+                                <button onclick="nextEscapeStation()" class="px-5 py-2.5 bg-gradient-to-r from-cyan-400 to-purple-500 text-slate-950 font-extrabold text-xs sm:text-sm rounded-xl shadow transition flex items-center gap-2">
+                                    <span>Mở khóa trạm tiếp theo</span> <i class="fa-solid fa-arrow-right"></i>
+                                </button>
+                            </div>
+                        </div>
+                    </div>
+
+                    <!-- Victory Container -->
+                    <div id="escapeVictoryContainer" class="hidden text-center py-8 space-y-5">
+                        <div class="w-20 h-20 mx-auto rounded-3xl bg-amber-500/20 border-2 border-amber-400 flex items-center justify-center text-4xl">
+                            🏆
+                        </div>
+                        <div class="space-y-2">
+                            <span class="text-xs font-extrabold uppercase tracking-widest text-emerald-300 bg-emerald-500/20 px-3 py-1 rounded-full">Giải mã hoàn tất!</span>
+                            <h3 class="text-2xl sm:text-3xl font-extrabold text-white">Chúc Mừng <span id="victoryCodename" class="text-cyan-300">Thám tử</span>!</h3>
+                            <p class="text-sm text-slate-300 max-w-md mx-auto">
+                                Em đã chinh phục trọn bộ thử thách Tri thức Ngữ văn và mở khóa Kho Báu Văn Chương!
+                            </p>
+                        </div>
+                        <div class="grid grid-cols-3 gap-3 max-w-md mx-auto bg-slate-950 p-4 rounded-2xl border border-slate-800">
+                            <div>
+                                <div class="text-xs text-slate-400">Trả lời đúng ngay</div>
+                                <div id="victoryCorrectCount" class="text-lg font-extrabold text-emerald-400">12/12</div>
+                            </div>
+                            <div>
+                                <div class="text-xs text-slate-400">Tổng điểm</div>
+                                <div id="victorySparkEarned" class="text-lg font-extrabold text-amber-400">+240 Spark</div>
+                            </div>
+                            <div>
+                                <div class="text-xs text-slate-400">Danh hiệu</div>
+                                <div class="text-xs sm:text-sm font-extrabold text-cyan-300 mt-1">Quán Quân Văn Học</div>
+                            </div>
+                        </div>
+                        <div class="flex justify-center gap-3 pt-2">
+                            <button onclick="restartEscapeGame()" class="px-5 py-2.5 bg-cyan-400 text-slate-950 font-extrabold text-sm rounded-xl transition">
+                                <i class="fa-solid fa-rotate-right mr-1.5"></i>Chơi lại
+                            </button>
+                            <button onclick="switchGameMode('speed')" class="px-5 py-2.5 bg-purple-500 text-white font-extrabold text-sm rounded-xl transition">
+                                <i class="fa-solid fa-bolt mr-1.5"></i>Sang Phân Loại 60s
+                            </button>
+                        </div>
+                    </div>
+                </div>
+            </div>
+
+            <!-- GAME MODE 2: SPEED SORTING 60s -->
+            <div id="gameMode-speed" class="hidden bg-slate-900/90 rounded-3xl p-6 sm:p-8 neon-card-amber space-y-6">
+                <div class="flex flex-wrap items-center justify-between gap-4 pb-4 border-b border-slate-800">
+                    <div>
+                        <h3 class="text-lg sm:text-xl font-extrabold text-white flex items-center gap-2">
+                            <i class="fa-solid fa-bolt text-amber-400"></i> Phản Xạ 60 Giây: Phân Biệt Thể Loại & Biện Pháp Nghệ Thuật
+                        </h3>
+                        <p class="text-xs sm:text-sm text-slate-400">Đọc nhanh nhận định/câu trích dẫn và bấm chọn đúng nhóm kiến thức tương ứng!</p>
+                    </div>
+                    <div class="flex items-center gap-3">
+                        <div class="bg-rose-500/15 border border-rose-500/40 px-4 py-2 rounded-2xl text-center">
+                            <div class="text-[10px] font-bold uppercase text-rose-300">Thời gian</div>
+                            <div id="speedTimerDisplay" class="text-lg font-extrabold text-rose-400">60s</div>
+                        </div>
+                        <div class="bg-emerald-500/15 border border-emerald-500/40 px-4 py-2 rounded-2xl text-center">
+                            <div class="text-[10px] font-bold uppercase text-emerald-300">Điểm số</div>
+                            <div id="speedScoreDisplay" class="text-lg font-extrabold text-emerald-400">0</div>
+                        </div>
+                        <button onclick="startSpeedGame()" id="speedStartBtn" class="px-5 py-3 bg-amber-400 hover:bg-amber-300 text-slate-950 font-extrabold text-sm rounded-2xl shadow transition">
+                            <i class="fa-solid fa-play mr-1"></i> Bắt đầu 60s
+                        </button>
+                    </div>
+                </div>
+
+                <div class="max-w-3xl mx-auto text-center py-4 space-y-6">
+                    <div class="bg-slate-950 border-2 border-dashed border-cyan-500/40 rounded-3xl p-6 sm:p-10 min-h-[180px] flex flex-col items-center justify-center space-y-3">
+                        <span id="speedCardCounter" class="text-xs font-bold uppercase tracking-wider text-cyan-300 bg-cyan-500/15 px-3 py-1 rounded-full">Sẵn sàng</span>
+                        <p id="speedQuoteDisplay" class="text-base sm:text-xl font-bold text-white leading-relaxed max-w-xl">
+                            Nhấn nút "Bắt đầu 60s" để phân loại nhanh các đặc trưng của Truyện đồng thoại (Lớp 6), Truyện thơ Nôm (Lớp 9), Ẩn dụ - Hoán dụ và Truyện truyền kỳ!
+                        </p>
+                        <div id="speedInstantToast" class="text-xs font-bold h-5"></div>
+                    </div>
+
+                    <div id="speedButtonsContainer" class="grid grid-cols-2 sm:grid-cols-4 gap-3 opacity-50 pointer-events-none transition">
+                        <button onclick="submitSpeedChoice('Truyện đồng thoại (K6)')" class="p-4 rounded-2xl bg-slate-950 hover:bg-cyan-500 hover:text-slate-950 border border-cyan-500/40 font-extrabold text-xs sm:text-sm text-cyan-300 transition flex flex-col items-center gap-1.5">
+                            <span class="text-xl">🦗</span>
+                            <span>Truyện đồng thoại (K6)</span>
+                        </button>
+                        <button onclick="submitSpeedChoice('Truyện thơ Nôm (K9)')" class="p-4 rounded-2xl bg-slate-950 hover:bg-purple-500 hover:text-slate-950 border border-purple-500/40 font-extrabold text-xs sm:text-sm text-purple-300 transition flex flex-col items-center gap-1.5">
+                            <span class="text-xl">🪕</span>
+                            <span>Truyện thơ Nôm (K9)</span>
+                        </button>
+                        <button onclick="submitSpeedChoice('Ẩn dụ & Hoán dụ')" class="p-4 rounded-2xl bg-slate-950 hover:bg-amber-400 hover:text-slate-950 border border-amber-500/40 font-extrabold text-xs sm:text-sm text-amber-300 transition flex flex-col items-center gap-1.5">
+                            <span class="text-xl">✨</span>
+                            <span>Ẩn dụ & Hoán dụ</span>
+                        </button>
+                        <button onclick="submitSpeedChoice('Truyện truyền kỳ & Truyền thuyết')" class="p-4 rounded-2xl bg-slate-950 hover:bg-emerald-400 hover:text-slate-950 border border-emerald-500/40 font-extrabold text-xs sm:text-sm text-emerald-300 transition flex flex-col items-center gap-1.5">
+                            <span class="text-xl">🕯️</span>
+                            <span>Truyền kỳ & Truyền thuyết</span>
+                        </button>
+                    </div>
+                </div>
+            </div>
+        </section>
+
+        <!-- ==========================================
+             TRẠM 3: ĐỐI THOẠI 8 NHÂN VẬT & CỐ VẤN AI (48+ GỢI Ý HỎI NHANH)
+             ========================================== -->
+        <section id="tab-ai-mentor" class="hidden space-y-6">
+            <div class="grid grid-cols-1 lg:grid-cols-12 gap-6">
+                <!-- Left (5 cols): 8 Literary Personas Selector -->
+                <div class="lg:col-span-5 bg-slate-900/90 rounded-3xl p-5 sm:p-6 neon-card-cyan space-y-4">
+                    <div class="flex items-center justify-between">
+                        <span class="text-xs font-extrabold uppercase tracking-wider text-cyan-300 bg-cyan-500/15 px-2.5 py-1 rounded border border-cyan-500/30">
+                            Nhập vai Văn học AI
+                        </span>
+                        <span class="text-xs text-amber-300 font-bold">8 Nhân vật • 48+ Gợi ý</span>
+                    </div>
+                    <h3 class="text-lg font-extrabold text-white">Chọn Nhân Vật Văn Học Để Phỏng Vấn</h3>
+                    <p class="text-xs text-slate-400 leading-relaxed">
+                        Mỗi nhân vật có sẵn <strong>6 câu hỏi gợi ý chuyên sâu</strong> bám sát nội dung bài học. Bấm chọn nhân vật bên dưới để trò chuyện ngay!
+                    </p>
+
+                    <div class="space-y-2 max-h-[450px] overflow-y-auto pr-1" id="personaList">
+                        <!-- Rendered dynamically from 8 personas -->
+                    </div>
+                </div>
+
+                <!-- Right (7 cols): Interactive Chat & Rich Prompt Suggestions -->
+                <div class="lg:col-span-7 bg-slate-900/90 rounded-3xl neon-card-purple flex flex-col h-[640px] overflow-hidden">
+                    <!-- Chat Header -->
+                    <div class="p-4 sm:px-6 bg-slate-950/90 border-b border-slate-800 flex items-center justify-between">
+                        <div class="flex items-center gap-3">
+                            <div id="chatHeaderAvatar" class="w-11 h-11 rounded-2xl bg-gradient-to-br from-cyan-400 to-purple-500 text-slate-950 flex items-center justify-center text-xl font-bold shadow">
+                                🦗
+                            </div>
+                            <div>
+                                <h4 id="chatHeaderName" class="font-extrabold text-sm sm:text-base text-white">Dế Mèn (Bài học đường đời đầu tiên)</h4>
+                                <p id="chatHeaderRole" class="text-xs text-cyan-300 font-medium"></p>
+                            </div>
+                        </div>
+                        <button onclick="clearChatHistory()" class="text-xs text-slate-400 hover:text-white font-semibold px-2.5 py-1 rounded-lg bg-slate-900 border border-slate-800">
+                            <i class="fa-solid fa-rotate-right mr-1"></i>Làm mới
+                        </button>
+                    </div>
+
+                    <!-- Chat Messages Box -->
+                    <div id="chatMessagesBox" class="flex-1 p-5 overflow-y-auto space-y-4 bg-slate-950/50">
+                        <!-- Populated by JS -->
+                    </div>
+
+                    <!-- Rich Quick Prompts Area (6+ buttons per character) -->
+                    <div class="p-4 bg-slate-950 border-t border-slate-800 space-y-3">
+                        <div class="flex items-center justify-between">
+                            <span class="text-[11px] font-extrabold uppercase tracking-wider text-amber-300">
+                                <i class="fa-solid fa-wand-magic-sparkles mr-1"></i>Kho gợi ý phỏng vấn nhanh (Chạm vào câu hỏi bất kỳ):
+                            </span>
+                            <span class="text-[11px] text-slate-400">+10 Spark / lượt hỏi</span>
+                        </div>
+                        <div id="quickPromptsContainer" class="flex flex-wrap gap-1.5 max-h-32 overflow-y-auto pr-1">
+                            <!-- Populated by JS -->
+                        </div>
+                        <form onsubmit="handleCustomChatSubmit(event)" class="flex gap-2 pt-1">
+                            <input id="customChatInput" type="text" placeholder="Hoặc tự nhập câu hỏi của em cho nhân vật (VD: Vì sao cậu trêu chị Cốc? Cốt truyện thơ Nôm có mấy phần?)..." class="flex-1 px-4 py-2.5 bg-slate-900 border border-slate-700 rounded-xl text-xs sm:text-sm text-white focus:outline-none focus:border-cyan-400">
+                            <button type="submit" class="px-5 py-2.5 bg-gradient-to-r from-cyan-400 to-blue-500 hover:opacity-95 text-slate-950 font-extrabold text-xs sm:text-sm rounded-xl transition flex items-center gap-1.5 shrink-0">
+                                <span>Hỏi AI</span> <i class="fa-solid fa-paper-plane"></i>
+                            </button>
+                        </form>
+                    </div>
+                </div>
+            </div>
+        </section>
+
+        <!-- ==========================================
+             TRẠM 4: GÓC GIÁO VIÊN (TÁI SỬ DỤNG < 10 PHÚT)
+             ========================================== -->
+        <section id="tab-teacher" class="hidden space-y-6">
+            <div class="bg-gradient-to-r from-emerald-950 via-teal-900 to-slate-900 rounded-3xl p-6 sm:p-8 border border-emerald-500/40 shadow-lg">
+                <div class="max-w-4xl space-y-2">
+                    <span class="bg-amber-400 text-slate-950 text-xs font-extrabold px-3 py-1 rounded-full uppercase">
+                        Đạt tối đa tiêu chí Khả năng tái sử dụng (&lt;30 phút) • Hạng T2 Toàn Hệ Thống
+                    </span>
+                    <h2 class="text-2xl sm:text-3xl font-extrabold text-white mt-2">
+                        Phòng Lab Chuyển Giao Học Liệu Cho Giáo Viên Sky-Line
+                    </h2>
+                    <p class="text-emerald-100 text-sm">
+                        Giáo viên Ngữ văn hoặc bất kỳ bộ môn nào (Lịch sử, Địa lý, GDCD, KHTN...) đều có thể thêm câu hỏi mới hoặc đổi sang môn học khác chỉ trong <strong>5–10 phút</strong> mà không cần biết lập trình.
+                    </p>
+                </div>
+            </div>
+
+            <div class="grid grid-cols-1 lg:grid-cols-3 gap-6">
+                <!-- Step 1: Master Prompt -->
+                <div class="bg-slate-900/90 rounded-3xl p-6 neon-card-cyan flex flex-col justify-between space-y-4">
+                    <div class="space-y-3">
+                        <div class="flex items-center justify-between">
+                            <span class="w-8 h-8 rounded-xl bg-cyan-500/20 text-cyan-300 font-extrabold flex items-center justify-center text-sm">1</span>
+                            <span class="text-xs font-bold text-slate-400">Tạo học liệu mới trong 2 phút</span>
+                        </div>
+                        <h3 class="text-lg font-extrabold text-white">Bước 1: Sao Chép Khuôn Lệnh AI (Master Prompt)</h3>
+                        <p class="text-xs text-slate-300">
+                            Nhập tên bài dạy mới, sao chép Khuôn lệnh chuẩn bên dưới và dán vào Gemini/ChatGPT để AI tự động sinh bộ thẻ 3D và câu hỏi Giải mã:
+                        </p>
+                        <input id="promptSubjectInput" type="text" value="Ngữ văn 6 & 9: Truyện đồng thoại & Truyện thơ Nôm" oninput="updateMasterPromptPreview()" class="w-full px-3 py-2 bg-slate-950 border border-slate-700 rounded-xl text-xs font-semibold text-cyan-300">
+                        <textarea id="masterPromptTextarea" readonly rows="8" class="w-full p-3 bg-slate-950 text-emerald-300 font-mono text-[11px] rounded-2xl border border-slate-800 focus:outline-none"></textarea>
+                    </div>
+                    <button onclick="copyMasterPrompt()" class="w-full py-3 bg-cyan-400 hover:bg-cyan-300 text-slate-950 font-extrabold text-xs sm:text-sm rounded-xl shadow transition flex items-center justify-center gap-2">
+                        <i class="fa-solid fa-copy"></i> Sao Chép Khuôn Lệnh AI
+                    </button>
+                </div>
+
+                <!-- Step 2: Form Add Card Directly -->
+                <div class="bg-slate-900/90 rounded-3xl p-6 neon-card-purple flex flex-col justify-between space-y-4">
+                    <div class="space-y-3">
+                        <div class="flex items-center justify-between">
+                            <span class="w-8 h-8 rounded-xl bg-purple-500/20 text-purple-300 font-extrabold flex items-center justify-center text-sm">2</span>
+                            <span class="text-xs font-bold text-slate-400">Không cần lập trình</span>
+                        </div>
+                        <h3 class="text-lg font-extrabold text-white">Bước 2: Thêm Trực Tiếp Thẻ Ôn Tập Mới</h3>
+                        <form onsubmit="handleQuickAddCard(event)" class="space-y-2.5 text-xs">
+                            <div>
+                                <label class="font-bold text-slate-300">Chọn chuyên đề / Khối lớp:</label>
+                                <select id="newCardGroup" class="w-full mt-1 px-3 py-2 bg-slate-950 border border-slate-700 rounded-xl font-semibold text-white">
+                                    <option value="K6_DONGTHOAI|Khối 6 • Truyện đồng thoại">Khối 6 • Truyện đồng thoại</option>
+                                    <option value="K9_THONOM|Khối 9 • Truyện thơ Nôm">Khối 9 • Truyện thơ Nôm</option>
+                                    <option value="K6_OTHER|Khối 6 • Truyền thuyết, Thơ & Tu từ">Khối 6 • Truyền thuyết, Thơ & Tu từ</option>
+                                    <option value="K9_OTHER|Khối 9 • Truyền kỳ, Thơ & Nghị luận">Khối 9 • Truyền kỳ, Thơ & Nghị luận</option>
+                                </select>
+                            </div>
+                            <div>
+                                <label class="font-bold text-slate-300">Tên khái niệm / Tác phẩm:</label>
+                                <input id="newCardTitle" required type="text" placeholder="VD: Bút pháp tả cảnh ngụ tình trong Truyện Kiều" class="w-full mt-1 px-3 py-2 bg-slate-950 border border-slate-700 rounded-xl text-white">
+                            </div>
+                            <div>
+                                <label class="font-bold text-slate-300">Giải nghĩa chuẩn Tri thức ngữ văn:</label>
+                                <textarea id="newCardDef" required rows="2" placeholder="Nhập nội dung giải nghĩa ngắn gọn..." class="w-full mt-1 px-3 py-2 bg-slate-950 border border-slate-700 rounded-xl text-white"></textarea>
+                            </div>
+                            <div>
+                                <label class="font-bold text-slate-300">Ví dụ văn bản & Mẹo nhớ AI:</label>
+                                <input id="newCardExample" required type="text" placeholder="Nhập dẫn chứng và mẹo ghi nhớ..." class="w-full mt-1 px-3 py-2 bg-slate-950 border border-slate-700 rounded-xl text-white">
+                            </div>
+                            <button type="submit" class="w-full py-3 bg-purple-500 hover:bg-purple-400 text-slate-950 font-extrabold text-xs sm:text-sm rounded-xl shadow transition flex items-center justify-center gap-2 mt-2">
+                                <i class="fa-solid fa-plus-circle"></i> Thêm Vào Trạm Thẻ 3D Ngay
+                            </button>
+                        </form>
+                    </div>
+                </div>
+
+                <!-- Step 3: Cross-subject Demo & JSON Import -->
+                <div class="bg-slate-900/90 rounded-3xl p-6 neon-card-amber flex flex-col justify-between space-y-4">
+                    <div class="space-y-3">
+                        <div class="flex items-center justify-between">
+                            <span class="w-8 h-8 rounded-xl bg-amber-500/20 text-amber-300 font-extrabold flex items-center justify-center text-sm">3</span>
+                            <span class="text-xs font-bold text-slate-400">Chứng minh nhân rộng</span>
+                        </div>
+                        <h3 class="text-lg font-extrabold text-white">Bước 3: Demo Đổi Môn Học Trong 5 Giây</h3>
+                        <p class="text-xs text-slate-300">
+                            Dành cho phần trình bày trước Ban Giám khảo ngày Showcase 14/11 để chứng minh giáo viên môn khác dùng lại được ngay:
+                        </p>
+                        <div class="grid grid-cols-1 gap-2 pt-1">
+                            <button onclick="loadSubjectPreset('vanhoc')" class="p-3 bg-cyan-500/15 hover:bg-cyan-400 hover:text-slate-950 text-cyan-300 border border-cyan-500/40 rounded-xl text-xs font-extrabold transition text-left flex items-center justify-between">
+                                <span>📚 Bộ gốc: Ngữ Văn 6 & 9 (Đồng thoại + Thơ Nôm)</span>
+                                <i class="fa-solid fa-check"></i>
+                            </button>
+                            <button onclick="loadSubjectPreset('lichsu')" class="p-3 bg-amber-500/15 hover:bg-amber-400 hover:text-slate-950 text-amber-300 border border-amber-500/40 rounded-xl text-xs font-extrabold transition text-left flex items-center justify-between">
+                                <span>🏛️ Thử đổi sang: Lịch Sử & Địa Lý (5 giây)</span>
+                                <i class="fa-solid fa-bolt"></i>
+                            </button>
+                        </div>
+                        <textarea id="jsonImportTextarea" rows="4" placeholder="Hoặc dán mã JSON học liệu từ AI vào đây..." class="w-full p-3 bg-slate-950 font-mono text-[11px] text-slate-300 rounded-2xl border border-slate-800 focus:outline-none"></textarea>
+                    </div>
+                    <div class="flex gap-2">
+                        <button onclick="importCustomJSON()" class="flex-1 py-2.5 bg-emerald-500 hover:bg-emerald-400 text-slate-950 font-extrabold text-xs rounded-xl transition">
+                            <i class="fa-solid fa-file-import mr-1"></i> Nạp JSON
+                        </button>
+                        <button onclick="exportCurrentJSON()" class="px-4 py-2.5 bg-slate-800 hover:bg-slate-700 text-slate-200 font-bold text-xs rounded-xl border border-slate-700 transition">
+                            <i class="fa-solid fa-download mr-1"></i> Xuất JSON
+                        </button>
+                    </div>
+                </div>
+            </div>
+        </section>
+
+    </main>
+
+    <!-- MODAL CAM KẾT 3 KHÔNG -->
+    <div id="safetyModal" class="fixed inset-0 bg-slate-950/80 backdrop-blur-sm z-50 hidden items-center justify-center p-4">
+        <div class="bg-slate-900 rounded-3xl max-w-lg w-full p-6 sm:p-8 neon-card-cyan space-y-5">
+            <div class="flex items-center justify-between">
+                <div class="flex items-center gap-3">
+                    <div class="w-10 h-10 rounded-2xl bg-emerald-500/20 text-emerald-400 flex items-center justify-center text-lg">
+                        <i class="fa-solid fa-shield-halved"></i>
+                    </div>
+                    <div>
+                        <h3 class="font-extrabold text-lg text-white">Cam Kết An Toàn Dữ Liệu & AI Có Trách Nhiệm</h3>
+                        <p class="text-xs text-slate-400">Tuân thủ tuyệt đối 3 Điều kiện loại Vòng 1 của Sky-Line</p>
+                    </div>
+                </div>
+                <button onclick="closeSafetyModal()" class="w-8 h-8 rounded-full bg-slate-800 text-slate-400 hover:text-white flex items-center justify-center">
+                    <i class="fa-solid fa-xmark"></i>
+                </button>
+            </div>
+            <div class="space-y-3 text-xs sm:text-sm text-slate-200">
+                <div class="p-3.5 rounded-2xl bg-slate-950 border border-emerald-500/30">
+                    <strong class="text-emerald-400">1. Không đưa dữ liệu cá nhân học sinh lên AI:</strong> Chỉ sử dụng ngữ liệu văn học trong SGK chương trình GDPT 2018.
+                </div>
+                <div class="p-3.5 rounded-2xl bg-slate-950 border border-emerald-500/30">
+                    <strong class="text-emerald-400">2. Không yêu cầu học sinh tạo tài khoản ngoài:</strong> Học sinh chọn Biệt hiệu văn học ẩn danh (Hiệp sĩ Dế Mèn, Danh sĩ Lục Vân Tiên...) để học ngay.
+                </div>
+                <div class="p-3.5 rounded-2xl bg-slate-950 border border-emerald-500/30">
+                    <strong class="text-emerald-400">3. Không công khai thông tin hay thành tích cá nhân:</strong> Điểm Spark chỉ lưu tạm thời trên phiên học để khích lệ tinh thần tự giác.
+                </div>
+            </div>
+            <div class="flex justify-end">
+                <button onclick="closeSafetyModal()" class="px-6 py-2.5 bg-cyan-400 text-slate-950 font-extrabold text-sm rounded-xl">Đã hiểu</button>
+            </div>
+        </div>
+    </div>
+
+    <!-- TOAST -->
+    <div id="toastNotification" class="fixed bottom-5 right-5 z-50 hidden bg-slate-900 text-white px-5 py-3.5 rounded-2xl shadow-2xl border border-cyan-400/50 flex items-center gap-3 text-xs sm:text-sm font-bold">
+        <i class="fa-solid fa-bolt text-amber-400 text-lg"></i>
+        <span id="toastMessage">Thông báo</span>
+    </div>
+
+    <!-- ==========================================
+         JAVASCRIPT ENGINE & EXPANDED LITERATURE DATA
+         ========================================== -->
+    <script>
+        const LITERATURE_PRESET = {
+            subjectTitle: "TRẠM ÔN TẬP & ĐẤU TRƯỜNG NGỮ VĂN AI",
+            subjectSubtitle: "Trọng tâm: Truyện đồng thoại (Lớp 6) & Truyện thơ Nôm (Lớp 9) • GDPT 2018",
+            flashcards: [
+                // --- CHUYÊN ĐỀ 1: TRUYỆN ĐỒNG THOẠI - KHỐI 6 (6 THẺ CHUYÊN SÂU) ---
+                {
+                    id: "dt1",
+                    group: "K6_DONGTHOAI",
+                    category: "Khối 6 • Truyện đồng thoại",
+                    title: "Khái niệm Truyện đồng thoại",
+                    subtitle: "Tri thức ngữ văn 6 • Bài học đường đời đầu tiên",
+                    definition: "Là thể loại truyện viết cho thiếu nhi, có nhân vật chính thường là loài vật hoặc đồ vật được NHÂN HÓA. Chúng vừa mang đặc tính sinh học tự nhiên của loài vật, vừa thể hiện tính cách, tâm lý của con người.",
+                    example: "Nhân vật Dế Mèn (Tô Hoài) vừa biết đào hang, ăn cỏ non, gáy vang (tập tính loài dế), vừa biết kiêu ngạo, ân hận và suy ngẫm bài học làm người.",
+                    aiTip: "Công thức nhận diện Truyện đồng thoại: Nhân vật loài vật/đồ vật + Phép Nhân hóa (vừa giữ tập tính loài vật + vừa mang tâm lý trẻ thơ/con người).",
+                    mastered: false
+                },
+                {
+                    id: "dt2",
+                    category: "Khối 6 • Truyện đồng thoại",
+                    group: "K6_DONGTHOAI",
+                    title: "Đặc điểm Nhân vật trong Truyện đồng thoại",
+                    subtitle: "Sự kết hợp tinh tế giữa Loài vật & Con người",
+                    definition: "Nhân vật đồng thoại được khắc họa qua ngoại hình, cử chỉ, hành động, ngôn ngữ đối thoại và suy nghĩ nội tâm. Qua thế giới loài vật ngộ nghĩnh, nhà văn gửi gắm bài học về tình bạn, lòng nhân ái và cách ứng xử.",
+                    example: "Trong 'Bài học đường đời đầu tiên': Dế Mèn cường tráng nhưng xốc nổi, kiêu căng; Dế Choắt gầy gò, ốm yếu nhưng hiền lành, biết lo xa.",
+                    aiTip: "Khi phân tích nhân vật đồng thoại, nhớ chỉ ra 2 nét: (1) Chi tiết miêu tả ngoại hình/thói quen loài vật và (2) Phẩm chất/tính cách con người ẩn bên trong.",
+                    mastered: false
+                },
+                {
+                    id: "dt3",
+                    group: "K6_DONGTHOAI",
+                    category: "Khối 6 • Truyện đồng thoại",
+                    title: "Bài học đường đời đầu tiên (Tô Hoài)",
+                    subtitle: "Trích Chương I - Dế Mèn phiêu lưu ký",
+                    definition: "Vì thói hung hăng, ngông cuồng, Dế Mèn bày trò trêu chọc chị Cốc dẫn đến cái chết oan uổng của người hàng xóm Dế Choắt. Trước nấm mộ bạn, Dế Mèn ân hận sâu sắc và rút ra bài học đường đời đầu tiên.",
+                    example: "Lời dặn của Dế Choắt trước khi mất: “Ở đời mà có thói hung hăng bậy bạ, có óc mà không biết nghĩ, sớm muộn rồi cũng mang vạ vào mình đấy.”",
+                    aiTip: "Ý nghĩa nhan đề: Sự va vấp đầu tiên giúp Dế Mèn tỉnh ngộ, từ bỏ tính kiêu ngạo để bước vào hành trình trưởng thành.",
+                    mastered: false
+                },
+                {
+                    id: "dt4",
+                    group: "K6_DONGTHOAI",
+                    category: "Khối 6 • Truyện đồng thoại",
+                    title: "Ngôi kể thứ nhất trong Truyện đồng thoại",
+                    subtitle: "Người kể chuyện xưng 'Tôi'",
+                    definition: "Trong 'Bài học đường đời đầu tiên', Tô Hoài để nhân vật Dế Mèn tự kể lại câu chuyện của chính mình theo ngôi thứ nhất (xưng 'tôi').",
+                    example: "“Bởi tôi ăn uống điều độ và làm việc có chừng mực nên tôi chóng lớn lắm... Tôi đứng lặng giờ lâu, nghĩ về bài học đường đời đầu tiên.”",
+                    aiTip: "Tác dụng của ngôi thứ nhất: Giúp câu chuyện trở nên gần gũi, chân thực; nhân vật dễ dàng tự thú nhận lỗi lầm và bộc lộ sự ăn năn, hối hận sâu sắc.",
+                    mastered: false
+                },
+                {
+                    id: "dt5",
+                    group: "K6_DONGTHOAI",
+                    category: "Khối 6 • Truyện đồng thoại",
+                    title: "Giọt sương đêm (Trần Đức Tiến)",
+                    subtitle: "Truyện đồng thoại về Xóm Bờ Giậu",
+                    definition: "Kể về ông khách Bọ Dừa (một thương gia đi xa lâu ngày) ngủ trọ đêm dưới vòm lá trúc ở xóm Bờ Giậu. Một giọt sương đêm lạnh toát rơi trúng cổ làm ông sực tỉnh, nhớ quê nhà da diết và quyết định sáng sớm hôm sau khoác ba lô trở về quê.",
+                    example: "Các nhân vật ở xóm Bờ Giậu: Thằn Lằn tốt bụng, hiếu khách; cụ giáo Cóc thông thái, trải đời; Bọ Dừa giàu tình cảm quê hương.",
+                    aiTip: "Hình ảnh 'Giọt sương đêm' là chi tiết nghệ thuật đắt giá: giọt sương của thiên nhiên đánh thức bản năng nguồn cội đang ngủ quên vì mải mê công việc.",
+                    mastered: false
+                },
+                {
+                    id: "dt6",
+                    group: "K6_DONGTHOAI",
+                    category: "Khối 6 • Truyện đồng thoại",
+                    title: "Mở rộng thành phần chính của câu bằng cụm từ",
+                    subtitle: "Thực hành Tiếng Việt gắn với Truyện đồng thoại",
+                    definition: "Chủ ngữ hoặc vị ngữ trong câu có thể được mở rộng từ một từ đơn lẻ thành một cụm từ (cụm danh từ, cụm động từ, cụm tính từ) để miêu tả sự vật, hoạt động chi tiết và sinh động hơn.",
+                    example: "Thay vì viết 'Càng tôi nhọn', Tô Hoài mở rộng: 'Đôi càng tôi mẫm bóng, những cái vuốt ở chân, ở khoeo cứ cứng dần và nhọn hoắt.'",
+                    aiTip: "Mẹo làm bài: Muốn mở rộng danh từ -> thêm số lượng ở trước và đặc điểm miêu tả ở sau (tạo thành Cụm danh từ).",
+                    mastered: false
+                },
+
+                // --- CHUYÊN ĐỀ 2: TRUYỆN THƠ NÔM - KHỐI 9 (6 THẺ CHUYÊN SÂU) ---
+                {
+                    id: "tn1",
+                    group: "K9_THONOM",
+                    category: "Khối 9 • Truyện thơ Nôm",
+                    title: "Khái niệm & Đặc trưng Truyện thơ Nôm",
+                    subtitle: "Tri thức ngữ văn 9 • Thể loại tự sự bằng thơ",
+                    definition: "Là thể loại tự sự bằng thơ viết bằng chữ Nôm (thường theo thể thơ lục bát), kết hợp hài hòa giữa phương thức TỰ SỰ (kể chuyện có nhân vật, cốt truyện) và TRỮ TÌNH (bộc lộ cảm xúc, tâm trạng).",
+                    example: "Phát triển rực rỡ vào cuối thế kỷ XVIII - nửa đầu thế kỷ XIX. Tiêu biểu: Truyện Kiều (Nguyễn Du), Truyện Lục Vân Tiên (Nguyễn Đình Chiểu), Tống Trân Cúc Hoa...",
+                    aiTip: "Từ khóa nhận diện Truyện thơ Nôm: Chữ Nôm + Thể thơ lục bát + Kết hợp Tự sự (kể chuyện) và Trữ tình (tâm trạng).",
+                    mastered: false
+                },
+                {
+                    id: "tn2",
+                    group: "K9_THONOM",
+                    category: "Khối 9 • Truyện thơ Nôm",
+                    title: "Phân loại: Truyện thơ Nôm bình dân & bác học",
+                    subtitle: "Hai dòng chảy của Truyện thơ Nôm Việt Nam",
+                    definition: "(1) Truyện thơ Nôm bình dân: Thường khuyết danh, cốt truyện dân gian, ngôn ngữ mộc mạc gần lời ăn tiếng nói hằng ngày (Phạm Tải - Ngọc Hoa, Tống Trân - Cúc Hoa). (2) Truyện thơ Nôm bác học: Có tên tác giả, điêu luyện về nghệ thuật, giàu điển tích điển cố (Truyện Kiều, Hoa tiên).",
+                    example: "Truyện Lục Vân Tiên (Nguyễn Đình Chiểu) mang đậm tính chất truyền miệng dân gian Nam Bộ; Truyện Kiều (Nguyễn Du) là đỉnh cao của Truyện thơ Nôm bác học.",
+                    aiTip: "Mẹo phân biệt: Bình dân = Khuyết danh, mộc mạc, thiên về hành động; Bác học = Có tác giả tên tuổi, ngôn ngữ trau chuốt, khắc họa sâu nội tâm.",
+                    mastered: false
+                },
+                {
+                    id: "tn3",
+                    group: "K9_THONOM",
+                    category: "Khối 9 • Truyện thơ Nôm",
+                    title: "Mô-típ Cốt truyện 3 phần trong Truyện thơ Nôm",
+                    subtitle: "Gặp gỡ (Hội ngộ) ➔ Tai biến (Chia ly) ➔ Đoàn tụ",
+                    definition: "Cốt truyện Truyện thơ Nôm thường xoay quanh số phận và tình yêu đôi lứa theo kết cấu 3 chặng: (1) Gặp gỡ & Đính ước -> (2) Gia biến, lưu lạc và thử thách -> (3) Đoàn tụ, sum họp (hoặc giải thoát).",
+                    example: "Trong Truyện Kiều: Kiều gặp gỡ Kim Trọng trong tiết Thanh minh -> Gia đình bị vu oan, Kiều bán mình lưu lạc 15 năm -> Kim Kiều trọng hội (Đoàn tụ).",
+                    aiTip: "Hãy nhớ công thức 3 chặng vàng của cốt truyện thơ Nôm: HỘI NGỘ ➔ LƯU LẠC (TAI BIẾN) ➔ ĐOÀN VIÊN.",
+                    mastered: false
+                },
+                {
+                    id: "tn4",
+                    group: "K9_THONOM",
+                    category: "Khối 9 • Truyện thơ Nôm",
+                    title: "Nghệ thuật xây dựng Nhân vật Truyện thơ Nôm",
+                    subtitle: "Tuyến nhân vật Thiện - Ác & Ngôn ngữ đối thoại, độc thoại",
+                    definition: "Nhân vật thường chia thành 2 tuyến đối lập: Chính diện (trọng nghĩa, chung thủy, tài sắc) và Phản diện (gian ác, bất nhân). Nhân vật được khắc họa qua hành động, đối thoại và đặc biệt là ĐỘC THOẠI NỘI TÂM cùng bút pháp TẢ CẢNH NGỤ TÌNH.",
+                    example: "Nguyễn Đình Chiểu khắc họa Lục Vân Tiên chủ yếu qua hành động nghĩa hiệp và lời nói thẳng thắn; Nguyễn Du khắc họa Thúy Kiều xuất sắc qua độc thoại nội tâm và tả cảnh ngụ tình.",
+                    aiTip: "So sánh nhanh: Lục Vân Tiên mạnh về miêu tả HÀNH ĐỘNG & ĐỐI THOẠI; Truyện Kiều đạt đỉnh cao về ĐỘC THOẠI NỘI TÂM & TẢ CẢNH NGỤ TÌNH.",
+                    mastered: false
+                },
+                {
+                    id: "tn5",
+                    group: "K9_THONOM",
+                    category: "Khối 9 • Truyện thơ Nôm",
+                    title: "Truyện Kiều (Nguyễn Du) - Kiệt tác Thơ Nôm",
+                    subtitle: "Cảnh ngày xuân • Kiều ở lầu Ngưng Bích • Kim Kiều trọng hội",
+                    definition: "Gồm 3.254 câu thơ lục bát, thể hiện giá trị hiện thực (tố cáo xã hội phong kiến chà đạp con người) và giá trị nhân đạo sâu sắc (ngợi ca vẻ đẹp, phẩm giá và khát vọng hạnh phúc của Thúy Kiều).",
+                    example: "Tám câu cuối đoạn 'Kiều ở lầu Ngưng Bích': Điệp ngữ 'Buồn trông' kết hợp bút pháp tả cảnh ngụ tình diễn tả nỗi cô đơn tuyệt vọng của Kiều nơi đất khách.",
+                    aiTip: "Khi phân tích Truyện Kiều, luôn nhớ 3 nghệ thuật đỉnh cao của Nguyễn Du: (1) Bút pháp ước lệ tượng trưng, (2) Tả cảnh ngụ tình, (3) Ngôn ngữ độc thoại nội tâm.",
+                    mastered: false
+                },
+                {
+                    id: "tn6",
+                    group: "K9_THONOM",
+                    category: "Khối 9 • Truyện thơ Nôm",
+                    title: "Lục Vân Tiên cứu Kiều Nguyệt Nga (Nguyễn Đình Chiểu)",
+                    subtitle: "Trích Truyện Lục Vân Tiên • Hào khí Nam Bộ",
+                    definition: "Thấy bọn cướp Phong Lai ức hiếp Kiều Nguyệt Nga, Lục Vân Tiên một mình 'bẻ cây làm gậy' xông vào đánh tan bọn cướp. Cứu người xong, chàng từ chối nhận lễ vật tạ ơn: 'Làm ơn há dễ trông người trả ơn'.",
+                    example: "“Nhớ câu kiến ngãi bất vi / Làm người thế ấy cũng phi anh hùng.” (Thấy việc nghĩa mà không làm thì không phải bậc anh hùng).",
+                    aiTip: "Hình tượng Lục Vân Tiên kết tinh lý tưởng đạo đức của Nguyễn Đình Chiểu: Trọng nghĩa khinh tài, xả thân vì chính nghĩa và giữ gìn lễ giáo.",
+                    mastered: false
+                },
+
+                // --- CÁC CHUYÊN ĐỀ KHỐI 6 & KHỐI 9 KHÁC (6 THẺ) ---
+                {
+                    id: "ot1",
+                    group: "K6_OTHER",
+                    category: "Khối 6 • Tiếng Việt & Tu từ",
+                    title: "Phân biệt Ẩn dụ và Hoán dụ",
+                    subtitle: "Tương đồng (Giống nhau) vs Tương cận (Gần gũi)",
+                    definition: "Ẩn dụ gọi tên sự vật A bằng sự vật B có nét TƯƠNG ĐỒNG (giống nhau ngầm). Hoán dụ gọi tên sự vật A bằng sự vật B có quan hệ GẦN GŨI, đi liền với nhau trong thực tế.",
+                    example: "“Mặt trời trong lăng rất đỏ” (Ẩn dụ chỉ Bác Hồ); “Áo chàm đưa buổi phân li” (Hoán dụ lấy trang phục chỉ người dân Việt Bắc).",
+                    aiTip: "Thử chèn từ 'giống như' vào giữa: Nếu hợp lý -> ẨN DỤ. Nếu không giống nhau về hình dáng mà chỉ đi kèm nhau -> HOÁN DỤ.",
+                    mastered: false
+                },
+                {
+                    id: "ot2",
+                    group: "K6_OTHER",
+                    category: "Khối 6 • Văn bản văn học",
+                    title: "Hoàng tử bé & Ý nghĩa của 'Cảm hóa'",
+                    subtitle: "Antoine de Saint-Exupéry",
+                    definition: "Qua cuộc đối thoại với Cáo, Hoàng tử bé hiểu rằng 'cảm hóa' nghĩa là tạo dựng những mối liên hệ gắn bó, dành thời gian chăm sóc và có trách nhiệm với bạn mình.",
+                    example: "“Người ta chỉ nhìn thấy thật rõ ràng bằng trái tim. Cái cốt yếu thì mắt thường không nhìn thấy được.”",
+                    aiTip: "Bông hồng trên tiểu hành tinh B612 trở nên duy nhất vì Hoàng tử bé đã dành thời gian lắng nghe và chăm sóc nó.",
+                    mastered: false
+                },
+                {
+                    id: "ot3",
+                    group: "K6_OTHER",
+                    category: "Khối 6 • Truyền thuyết & Cổ tích",
+                    title: "Chi tiết kỳ ảo trong Truyền thuyết (Thánh Gióng)",
+                    subtitle: "Cốt lõi lịch sử + Tưởng tượng kỳ ảo",
+                    definition: "Truyền thuyết kể về các nhân vật, sự kiện liên quan đến lịch sử quá khứ, thường dùng chi tiết kỳ ảo để thần thánh hóa người anh hùng và thể hiện lòng biết ơn của nhân dân.",
+                    example: "Gióng vươn vai thành tráng sĩ, ngựa sắt phun lửa, nhổ tre đằng ngà đánh giặc Ân rồi bay về trời.",
+                    aiTip: "Khác với Cổ tích (hư cấu hoàn toàn về số phận người nhỏ bé), Truyền thuyết luôn gắn với địa danh, di tích và cốt lõi lịch sử dân tộc.",
+                    mastered: false
+                },
+                {
+                    id: "ot4",
+                    group: "K9_OTHER",
+                    category: "Khối 9 • Truyện truyền kỳ",
+                    title: "Truyện truyền kỳ & Chuyện người con gái Nam Xương",
+                    subtitle: "Nguyễn Dữ • Truyền kỳ mạn lục",
+                    definition: "Truyện truyền kỳ là thể văn xuôi tự sự trung đại viết bằng chữ Hán, kết hợp yếu tố kỳ ảo (thần tiên, thủy cung) với hiện thực xã hội để bênh vực người phụ nữ đức hạnh.",
+                    example: "Chi tiết 'chiếc bóng trên vách' là nút thắt mở kịch tính cho nỗi oan của Vũ Nương; chi tiết Vũ Nương hiện về trên bến Hoàng Giang khẳng định sự trong sạch nhưng bi kịch không thể xóa bỏ.",
+                    aiTip: "Nhớ phân biệt: Truyện truyền kỳ (Văn xuôi chữ Hán, có yếu tố kỳ ảo) khác với Truyện thơ Nôm (Thơ lục bát chữ Nôm).",
+                    mastered: false
+                },
+                {
+                    id: "ot5",
+                    group: "K9_OTHER",
+                    category: "Khối 9 • Thơ song thất lục bát",
+                    title: "Thể thơ Song thất lục bát (Khúc ngâm)",
+                    subtitle: "Chinh phụ ngâm • Nỗi niềm người vợ có chồng đi chinh chiến",
+                    definition: "Thể thơ truyền thống của dân tộc, kết hợp 1 cặp câu 7 chữ (song thất) với 1 cặp câu 6-8 chữ (lục bát) luân phiên, giàu nhạc điệu trầm bổng, thích hợp giãi bày tâm sự bi thương.",
+                    example: "“Cùng trông lại mà cùng chẳng thấy / Thấy xanh xanh những mấy ngàn dâu / Ngàn dâu xanh ngắt một màu / Lòng chàng ý thiếp ai sầu hơn ai?”",
+                    aiTip: "Đếm số chữ từng khổ 4 câu: 7 - 7 - 6 - 8 -> Chắc chắn là thể thơ Song thất lục bát!",
+                    mastered: false
+                },
+                {
+                    id: "ot6",
+                    group: "K9_OTHER",
+                    category: "Khối 9 • Nghị luận văn học",
+                    title: "Công thức Phân tích Nhân vật trong Truyện thơ Nôm / Đồng thoại",
+                    subtitle: "Kỹ năng viết bài văn nghị luận đạt điểm tối đa",
+                    definition: "Khi viết bài phân tích một nhân vật văn học, cần triển khai theo hệ thống luận điểm: (1) Lai lịch, hoàn cảnh -> (2) Phẩm chất, tính cách qua ngoại hình, hành động, ngôn ngữ, nội tâm -> (3) Đánh giá nghệ thuật xây dựng nhân vật của tác giả.",
+                    example: "Phân tích Lục Vân Tiên: Làm rõ phẩm chất anh hùng trọng nghĩa (qua hành động đánh cướp) + tấm lòng nhân hậu, chính trực (qua lời đối thoại với Kiều Nguyệt Nga) + nghệ thuật thơ Nôm bình dị của Nguyễn Đình Chiểu.",
+                    aiTip: "Đừng chỉ kể lại cốt truyện! Hãy luôn trả lời câu hỏi: Chi tiết đó thể hiện PHẨM CHẤT gì của nhân vật và BÚT PHÁP nghệ thuật gì của nhà văn?",
+                    mastered: false
+                }
+            ],
+
+            // --- 12 CÂU HỎI ESCAPE ROOM CHUYÊN SÂU (TẬP TRUNG ĐỒNG THOẠI K6 & THƠ NÔM K9) ---
+            escapeQuestions: [
+                {
+                    group: "K6_DONGTHOAI",
+                    stationName: "Trạm 1 (Khối 6): Nhận Diện Truyện Đồng Thoại",
+                    topic: "Tri thức ngữ văn 6 • Truyện đồng thoại",
+                    context: "Trong văn bản 'Bài học đường đời đầu tiên' (Tô Hoài) và 'Giọt sương đêm' (Trần Đức Tiến), các nhân vật như Dế Mèn, Dế Choắt, Bọ Dừa, Thằn Lằn, cụ giáo Cóc đều là những con vật nhỏ bé nơi đồng cỏ, bờ giậu.",
+                    question: "Đặc điểm cốt lõi nhất của nhân vật trong thể loại Truyện đồng thoại là gì?",
+                    options: [
+                        "A. Chỉ miêu tả chính xác đặc điểm sinh học của loài vật như sách Khoa học tự nhiên",
+                        "B. Là các vị thần tiên có phép thuật biến hóa cứu giúp con người",
+                        "C. Là loài vật/đồ vật được nhân hóa: vừa giữ đặc tính tự nhiên của loài vật, vừa thể hiện tính cách, tâm lý của con người",
+                        "D. Là các nhân vật lịch sử có thật thời dựng nước"
+                    ],
+                    correctIndex: 2,
+                    hint: "Hãy nhớ lại Dế Mèn: vừa biết đào hang, ăn cỏ non, gáy vang (loài dế), vừa biết kiêu ngạo, trêu chọc bạn và ân hận (tính cách con người).",
+                    explanation: "Chính xác! Sức hấp dẫn của Truyện đồng thoại nằm ở nghệ thuật Nhân hóa kép: nhân vật vừa sống động đúng tập tính loài vật, vừa phản chiếu tâm hồn trẻ thơ và bài học làm người."
+                },
+                {
+                    group: "K6_DONGTHOAI",
+                    stationName: "Trạm 2 (Khối 6): Bài Học Của Dế Mèn",
+                    topic: "Văn bản: Bài học đường đời đầu tiên (Tô Hoài)",
+                    context: "Trước lúc nhắm mắt vì bị chị Cốc mổ oan, Dế Choắt đã khuyên Dế Mèn:\n“Ở đời mà có thói hung hăng bậy bạ, có óc mà không biết nghĩ, sớm muộn rồi cũng mang vạ vào mình đấy.”",
+                    question: "Việc tác giả Tô Hoài để Dế Mèn tự kể lại câu chuyện theo ngôi thứ nhất (xưng 'tôi') mang lại hiệu quả nghệ thuật gì nổi bật nhất?",
+                    options: [
+                        "A. Giúp Dế Mèn giấu kín lỗi lầm của mình trước người đọc",
+                        "B. Giúp câu chuyện khách quan tuyệt đối vì người kể không tham gia vào câu chuyện",
+                        "C. Giúp nhân vật trực tiếp tự thú lỗi lầm, bộc lộ chân thực tâm lý kiêu căng lúc đầu và nỗi ân hận, thức tỉnh sâu sắc về sau",
+                        "D. Làm cho câu chuyện mang màu sắc thần thoại cổ xưa"
+                    ],
+                    correctIndex: 2,
+                    hint: "Khi chính người mắc lỗi tự xưng 'tôi' để kể lại nỗi ân hận của mình trước mộ bạn, lời kể sẽ chạm đến trái tim người đọc như thế nào?",
+                    explanation: "Tuyệt vời! Ngôi kể thứ nhất giúp Dế Mèn tự soi chiếu vào nội tâm mình, làm cho sự ăn năn và 'bài học đường đời đầu tiên' trở nên chân thực, thấm thía."
+                },
+                {
+                    group: "K6_DONGTHOAI",
+                    stationName: "Trạm 3 (Khối 6): Giọt Sương Đêm Xóm Bờ Giậu",
+                    topic: "Văn bản: Giọt sương đêm (Trần Đức Tiến)",
+                    context: "Trong truyện đồng thoại 'Giọt sương đêm', ông khách Bọ Dừa vốn là một thương gia đi buôn bán xa quê lâu ngày. Đêm ngủ dưới vòm lá trúc ở xóm Bờ Giậu, một giọt sương đêm lạnh toát rơi trúng cổ làm Bọ Dừa sực tỉnh.",
+                    question: "Sau đêm thức trắng lắng nghe âm thanh thôn dã và cảm nhận giọt sương đêm, Bọ Dừa đã đưa ra quyết định gì vào sáng hôm sau?",
+                    options: [
+                        "A. Ở lại xóm Bờ Giậu xây một ngôi nhà kiên cố",
+                        "B. Khoác ba lô lên vai, tạm biệt Thằn Lằn để trở về quê hương sau bao năm xa cách",
+                        "C. Tiếp tục đi buôn ở những vùng đất xa xôi hơn",
+                        "D. Nhờ cụ giáo Cóc tìm giúp một quán trọ ấm áp hơn"
+                    ],
+                    correctIndex: 1,
+                    hint: "Giọt sương đêm mát lạnh và bình yên nơi xóm nhỏ đã đánh thức nỗi nhớ nào trong lòng người xa xứ?",
+                    explanation: "Xuất sắc! Giọt sương đêm trong trẻo đã làm thức dậy nỗi nhớ quê hương tha thiết trong tâm hồn Bọ Dừa, giúp ông nhận ra giá trị của nguồn cội."
+                },
+                {
+                    group: "K6_DONGTHOAI",
+                    stationName: "Trạm 4 (Khối 6): Cụm Từ Mở Rộng Câu",
+                    topic: "Thực hành Tiếng Việt 6 • Mở rộng thành phần câu",
+                    context: "So sánh hai câu văn miêu tả Dế Mèn:\nCâu 1: “Càng tôi nhọn.”\nCâu 2: “Những cái vuốt ở chân, ở khoeo cứ cứng dần và nhọn hoắt.”",
+                    question: "Ở câu 2, tác giả Tô Hoài đã sử dụng biện pháp ngữ pháp nào để miêu tả ngoại hình Dế Mèn cụ thể, sống động hơn câu 1?",
+                    options: [
+                        "A. Rút gọn chủ ngữ và vị ngữ của câu",
+                        "B. Mở rộng thành phần chính của câu bằng cụm từ (cụm danh từ ở chủ ngữ và cụm tính từ/động từ ở vị ngữ)",
+                        "C. Biến câu kể thành câu cầu khiến",
+                        "D. Sử dụng từ đồng âm"
+                    ],
+                    correctIndex: 1,
+                    hint: "Chủ ngữ 'Những cái vuốt ở chân, ở khoeo' là một từ đơn hay một cụm danh từ có đầy đủ phần trước, phần trung tâm và phần phụ sau?",
+                    explanation: "Chính xác! Việc mở rộng chủ ngữ và vị ngữ bằng các cụm từ giúp câu văn miêu tả nhân vật đồng thoại hiện lên chi tiết, gân guốc và giàu hình ảnh."
+                },
+                {
+                    group: "K9_THONOM",
+                    stationName: "Trạm 5 (Khối 9): Đặc Trưng Truyện Thơ Nôm",
+                    topic: "Tri thức ngữ văn 9 • Truyện thơ Nôm",
+                    context: "Truyện thơ Nôm là một thành tựu rực rỡ của văn học dân tộc Việt Nam thời trung đại với những tác phẩm tiêu biểu như 'Truyện Kiều', 'Truyện Lục Vân Tiên', 'Tống Trân - Cúc Hoa', 'Phạm Tải - Ngọc Hoa'...",
+                    question: "Nhận định nào dưới đây nêu ĐÚNG NHẤT đặc trưng thể loại của Truyện thơ Nôm?",
+                    options: [
+                        "A. Là thể văn xuôi viết bằng chữ Hán, không có vần điệu",
+                        "B. Là thể loại tự sự bằng thơ viết bằng chữ Nôm (chủ yếu theo thể thơ lục bát), kết hợp nhuần nhuyễn giữa tự sự và trữ tình",
+                        "C. Là các bài thơ Đường luật thất ngôn bát cú chỉ tả cảnh thiên nhiên",
+                        "D. Là kịch bản sân khấu hiện đại viết bằng chữ Quốc ngữ"
+                    ],
+                    correctIndex: 1,
+                    hint: "Hãy chú ý ngay ở tên gọi 'Truyện' (tự sự kể chuyện) + 'thơ' (trữ tình, thể lục bát) + 'Nôm' (văn tự chữ Nôm).",
+                    explanation: "Hoàn toàn chính xác! Truyện thơ Nôm là sáng tạo độc đáo của dân tộc ta: dùng thể thơ lục bát truyền thống và chữ Nôm để kể những câu chuyện dài giàu cảm xúc."
+                },
+                {
+                    group: "K9_THONOM",
+                    stationName: "Trạm 6 (Khối 9): Mô-típ Cốt Truyện Thơ Nôm",
+                    topic: "Tri thức ngữ văn 9 • Kết cấu Truyện thơ Nôm",
+                    context: "Khảo sát cốt truyện của phần lớn các Truyện thơ Nôm như 'Truyện Kiều' (Nguyễn Du) hay 'Truyện Lục Vân Tiên' (Nguyễn Đình Chiểu), các nhà nghiên cứu nhận thấy một mô-típ kết cấu rất chặt chẽ.",
+                    question: "Cốt truyện của Truyện thơ Nôm thường triển khai theo mô-típ 3 phần nào sau đây?",
+                    options: [
+                        "A. Gặp gỡ (Hội ngộ) ➔ Tai biến (Chia ly, thử thách) ➔ Đoàn tụ (Sum họp)",
+                        "B. Sinh ra kỳ lạ ➔ Lập chiến công đánh giặc ➔ Bay về trời",
+                        "C. Mở bài ➔ Giải thích khái niệm ➔ Bàn luận mở rộng",
+                        "D. Lưu lạc ➔ Gặp gỡ lần đầu ➔ Chia ly vĩnh viễn"
+                    ],
+                    correctIndex: 0,
+                    hint: "Hãy nhớ lại hành trình của Thúy Kiều - Kim Trọng hoặc Lục Vân Tiên - Kiều Nguyệt Nga: Đầu tiên họ gặp nhau, sau đó sóng gió ập đến, và cuối cùng ra sao?",
+                    explanation: "Chuẩn xác! Mô-típ 3 chặng 'Gặp gỡ - Tai biến - Đoàn tụ' phản ánh ước mơ công lý và khát vọng hạnh phúc chính đáng của con người vượt lên mọi nghịch cảnh."
+                },
+                {
+                    group: "K9_THONOM",
+                    stationName: "Trạm 7 (Khối 9): Nghĩa Hiệp Lục Vân Tiên",
+                    topic: "Văn bản: Lục Vân Tiên cứu Kiều Nguyệt Nga",
+                    context: "Trong đoạn trích 'Lục Vân Tiên cứu Kiều Nguyệt Nga' (Nguyễn Đình Chiểu), sau khi đánh tan bọn cướp Phong Lai, Kiều Nguyệt Nga ngỏ ý muốn mời chàng về miền Hà Khê để cha nàng đền đáp công ơn, nhưng Vân Tiên liền từ chối:\n“Làm ơn há dễ trông người trả ơn / Nay đà rõ đặng nguồn cơn / Nào ai tính thiệt so hơn làm gì!”",
+                    question: "Qua hành động đánh cướp và lời từ chối nhận đền ơn, nhân vật Lục Vân Tiên hiện lên với vẻ đẹp lý tưởng nào?",
+                    options: [
+                        "A. Kiêu ngạo, coi thường của cải của người khác",
+                        "B. Anh hùng trọng nghĩa khinh tài, xả thân cứu người gặp nạn hoàn toàn vô tư, không màng danh lợi",
+                        "C. Lo sợ bị cha của Kiều Nguyệt Nga trách phạt",
+                        "D. Chỉ muốn lập công để được triều đình phong quan chức"
+                    ],
+                    correctIndex: 1,
+                    hint: "Câu thơ 'Nhớ câu kiến ngãi bất vi / Làm người thế ấy cũng phi anh hùng' khẳng định lẽ sống gì của Lục Vân Tiên?",
+                    explanation: "Xuất sắc! Lục Vân Tiên là hình mẫu nhân vật lý tưởng của Nguyễn Đình Chiểu: dũng cảm trừ bạo, trọng nghĩa khinh tài, làm việc nghĩa như một lẽ tự nhiên của bậc trượng phu."
+                },
+                {
+                    group: "K9_THONOM",
+                    stationName: "Trạm 8 (Khối 9): Tả Cảnh Ngụ Tình Ở Lầu Ngưng Bích",
+                    topic: "Văn bản: Truyện Kiều - Nguyễn Du",
+                    context: "Đọc bốn câu thơ cuối trong đoạn trích 'Kiều ở lầu Ngưng Bích':\n“Buồn trông nội cỏ rầu rầu,\nChân mây mặt đất một màu xanh xanh.\nBuồn trông gió cuốn mặt duềnh,\nẦm ầm tiếng sóng kêu quanh ghế ngồi.”",
+                    question: "Đại thi hào Nguyễn Du đã kết hợp những biện pháp nghệ thuật đặc sắc nào trong đoạn thơ trên để khắc họa tâm trạng Thúy Kiều?",
+                    options: [
+                        "A. Nghệ thuật phóng đại và chơi chữ",
+                        "B. Bút pháp 'Tả cảnh ngụ tình' bậc thầy kết hợp điệp ngữ 'Buồn trông' và hệ thống từ láy giàu sức gợi ('rầu rầu', 'xanh xanh', 'ầm ầm')",
+                        "C. Kể chuyện hoàn toàn bằng ngôn ngữ đối thoại giữa Kiều và Tú Bà",
+                        "D. Sử dụng thể thơ thất ngôn bát cú Đường luật"
+                    ],
+                    correctIndex: 1,
+                    hint: "Mỗi cảnh vật (nội cỏ héo úa, sóng gió ầm ầm) đều là sự phản chiếu nỗi buồn, sự bế tắc và nỗi kinh hoàng của Kiều trước bão táp cuộc đời.",
+                    explanation: "Đỉnh cao! Tám câu thơ cuối đoạn 'Kiều ở lầu Ngưng Bích' là mẫu mực tuyệt đối của bút pháp tả cảnh ngụ tình trong Truyện thơ Nôm bác học."
+                },
+                {
+                    group: "K9_THONOM",
+                    stationName: "Trạm 9 (Khối 9): Bút Pháp Ước Lệ & Điển Cố",
+                    topic: "Thực hành Tiếng Việt 9 • Điển tích, điển cố",
+                    context: "Khi Thúy Kiều ở lầu Ngưng Bích nhớ về cha mẹ già nơi quê nhà, nàng xót xa độc thoại:\n“Xót người tựa cửa hôm mai,\nQuạt nồng ấp lạnh những ai đó giờ?\nSân Lai cách mấy nắng mưa,\nCó khi gốc tử đã vừa người ôm.”",
+                    question: "Việc Nguyễn Du sử dụng các điển tích, điển cố 'tựa cửa', 'quạt nồng ấp lạnh', 'sân Lai', 'gốc tử' có tác dụng gì?",
+                    options: [
+                        "A. Thể hiện hàm súc, trang trọng tấm lòng hiếu thảo sâu nặng và nỗi day dứt khôn nguôi của Kiều khi không thể phụng dưỡng cha mẹ",
+                        "B. Chỉ để miêu tả thời tiết mùa hè và mùa đông ở quê nhà",
+                        "C. Kể lại chuyện trồng cây tử ở sân nhà Lão Lai",
+                        "D. Làm cho câu thơ trở nên hài hước, dí dỏm"
+                    ],
+                    correctIndex: 0,
+                    hint: "'Quạt nồng ấp lạnh', 'Sân Lai' đều là những câu chuyện xưa nói về tấm gương con cái hiếu thảo chăm sóc cha mẹ già.",
+                    explanation: "Chính xác! Điển tích, điển cố trong Truyện thơ Nôm bác học giúp lời thơ ngắn gọn mà hàm chứa ý nghĩa sâu xa, tôn vinh vẻ đẹp hiếu thảo của Thúy Kiều."
+                },
+                {
+                    group: "K6_OTHER",
+                    stationName: "Trạm 10 (Khối 6): Phân Biệt Ẩn Dụ & Hoán Dụ",
+                    topic: "Tiếng Việt 6 • Biện pháp tu từ",
+                    context: "Đọc hai câu thơ:\n(1) “Ngày ngày mặt trời đi qua trên lăng / Thấy một mặt trời trong lăng rất đỏ.” (Viễn Phương)\n(2) “Áo chàm đưa buổi phân li / Cầm tay nhau biết nói gì hôm nay.” (Tố Hữu)",
+                    question: "Hình ảnh 'mặt trời trong lăng' ở câu (1) và 'Áo chàm' ở câu (2) lần lượt sử dụng biện pháp tu từ nào?",
+                    options: [
+                        "A. Câu (1) là Hoán dụ; Câu (2) là Ẩn dụ",
+                        "B. Câu (1) là Ẩn dụ (dựa trên nét tương đồng); Câu (2) là Hoán dụ (lấy dấu hiệu trang phục chỉ người dân Việt Bắc)",
+                        "C. Cả hai câu đều là Nhân hóa",
+                        "D. Cả hai câu đều là Điệp ngữ"
+                    ],
+                    correctIndex: 1,
+                    hint: "Bác Hồ tỏa sáng rực rỡ GIỐNG NHƯ mặt trời (Tương đồng). Còn chiếc áo chàm ĐI LIỀN VỚI người dân Việt Bắc (Tương cận).",
+                    explanation: "Tuyệt vời! Nắm vững quy tắc 'Ẩn dụ = Tương đồng, Hoán dụ = Tương cận' sẽ giúp em làm đúng 100% câu hỏi Tiếng Việt."
+                },
+                {
+                    group: "K9_OTHER",
+                    stationName: "Trạm 11 (Khối 9): Bi Kịch Chiếc Bóng Nam Xương",
+                    topic: "Văn bản: Chuyện người con gái Nam Xương (Nguyễn Dữ)",
+                    context: "Trong 'Chuyện người con gái Nam Xương', sau khi Vũ Nương gieo mình xuống sông Hoàng Giang tự vẫn, một đêm Trương Sinh ngồi bên ngọn đèn dầu thì bé Đản chỉ vào chiếc bóng của Trương Sinh trên vách và bảo: 'Cha Đản lại đến kia kìa!'",
+                    question: "Chi tiết 'chiếc bóng trên vách' đóng vai trò nghệ thuật gì trong cốt truyện truyền kỳ của Nguyễn Dữ?",
+                    options: [
+                        "A. Là chi tiết thừa không liên quan đến số phận Vũ Nương",
+                        "B. Là chi tiết thắt nút (gây ra nghi ngờ) và cũng chính là chi tiết mở nút (hóa giải nỗi oan của Vũ Nương nhưng đã quá muộn)",
+                        "C. Là chi tiết kỳ ảo dưới thủy cung",
+                        "D. Là lời kể của Phan Lang"
+                    ],
+                    correctIndex: 1,
+                    hint: "Vì chiếc bóng mà bé Đản nói ngây thơ khiến Trương Sinh ghen tuông (thắt nút); và cũng chính chiếc bóng buổi đêm làm Trương Sinh hiểu ra nỗi oan của vợ (mở nút).",
+                    explanation: "Xuất sắc! Chiếc bóng là sáng tạo nghệ thuật đắt giá của Nguyễn Dữ: vừa thắt nút vừa mở nút câu chuyện, tố cáo thói gia trưởng, đa nghi mù quáng."
+                },
+                {
+                    group: "K9_THONOM",
+                    stationName: "Trạm 12 (Tổng hợp K6 & K9): So Sánh Đồng Thoại & Thơ Nôm",
+                    topic: "Tổng hợp Tri thức Ngữ văn 6 & 9",
+                    context: "Cả Truyện đồng thoại (Khối 6) và Truyện thơ Nôm (Khối 9) đều là những thể loại có cốt truyện và nhân vật hấp dẫn để gửi gắm bài học nhân sinh.",
+                    question: "Điểm khác biệt rõ nhất về hình thức ngôn từ và nhân vật giữa Truyện đồng thoại và Truyện thơ Nôm là gì?",
+                    options: [
+                        "A. Truyện đồng thoại viết bằng văn xuôi với nhân vật chính là loài vật/đồ vật nhân hóa; còn Truyện thơ Nôm viết bằng thơ chữ Nôm (chủ yếu lục bát) với nhân vật con người trong xã hội phong kiến",
+                        "B. Truyện đồng thoại viết bằng chữ Hán; Truyện thơ Nôm viết bằng tiếng Anh",
+                        "C. Cả hai đều chỉ viết về loài dế và bọ dừa",
+                        "D. Truyện thơ Nôm không có cốt truyện"
+                    ],
+                    correctIndex: 0,
+                    hint: "Hãy đối chiếu 'Bài học đường đời đầu tiên' (văn xuôi, nhân vật Dế Mèn) với 'Truyện Kiều / Lục Vân Tiên' (thơ lục bát chữ Nôm, nhân vật con người).",
+                    explanation: "Hoàn hảo! Em đã nắm vững trọn vẹn đặc trưng của cả hai thể loại trọng tâm Ngữ văn 6 và Ngữ văn 9!"
+                }
+            ],
+
+            // --- DỮ LIỆU MINI-GAME PHÂN LOẠI SIÊU TỐC 60 GIÂY ---
+            speedItems: [
+                { quote: "Nhân vật chính là Dế Mèn, Dế Choắt, chị Cốc, Bọ Dừa, Thằn Lằn được nhân hóa vừa mang tập tính loài vật vừa có tâm lý con người.", category: "Truyện đồng thoại (K6)" },
+                { quote: "“Ở đời mà có thói hung hăng bậy bạ, có óc mà không biết nghĩ, sớm muộn rồi cũng mang vạ vào mình đấy.” (Tô Hoài)", category: "Truyện đồng thoại (K6)" },
+                { quote: "Ông khách Bọ Dừa sực tỉnh vì giọt sương đêm lạnh toát rơi trúng cổ nơi xóm Bờ Giậu và quyết định trở về quê hương.", category: "Truyện đồng thoại (K6)" },
+                { quote: "Tác phẩm tự sự bằng thơ viết bằng chữ Nôm, chủ yếu theo thể lục bát, có cốt truyện 3 phần: Gặp gỡ - Tai biến - Đoàn tụ.", category: "Truyện thơ Nôm (K9)" },
+                { quote: "“Vân Tiên tả đột hữu xông / Khác nào Triệu Tử phá vòng Đương Dương.” (Nguyễn Đình Chiểu)", category: "Truyện thơ Nôm (K9)" },
+                { quote: "“Buồn trông nội cỏ rầu rầu / Chân mây mặt đất một màu xanh xanh.” (Truyện Kiều - Nguyễn Du)", category: "Truyện thơ Nôm (K9)" },
+                { quote: "“Cỏ non xanh tận chân trời / Cành lê trắng điểm một vài bông hoa.” (Cảnh ngày xuân - Truyện Kiều)", category: "Truyện thơ Nôm (K9)" },
+                { quote: "“Ngày ngày mặt trời đi qua trên lăng / Thấy một mặt trời trong lăng rất đỏ.”", category: "Ẩn dụ & Hoán dụ" },
+                { quote: "“Áo chàm đưa buổi phân li / Cầm tay nhau biết nói gì hôm nay.”", category: "Ẩn dụ & Hoán dụ" },
+                { quote: "Tác phẩm văn xuôi chữ Hán thời trung đại kết hợp yếu tố kỳ ảo dưới thủy cung với bi kịch gia đình Vũ Nương.", category: "Truyện truyền kỳ & Truyền thuyết" },
+                { quote: "Cậu bé làng Phù Đổng vươn vai thành tráng sĩ, cưỡi ngựa sắt phun lửa đánh tan giặc Ân rồi bay về trời.", category: "Truyện truyền kỳ & Truyền thuyết" }
+            ]
+        };
+
+        // --- PRESET DEMO LỊCH SỬ (CHỨNG MINH TÁI SỬ DỤNG 5 GIÂY) ---
+        const HISTORY_PRESET = {
+            subjectTitle: "SKY-LINE LỊCH SỬ SPARK (DEMO LIÊN MÔN)",
+            subjectSubtitle: "Chứng minh khả năng tái sử dụng <10 phút cho mọi bộ môn tại Sky-Line",
+            flashcards: [
+                {
+                    id: "his1",
+                    group: "K6_DONGTHOAI",
+                    category: "Lịch sử 6 • Bước ngoặt lịch sử",
+                    title: "Chiến thắng Bạch Đằng năm 938 (Ngô Quyền)",
+                    subtitle: "Chấm dứt hơn 1000 năm Bắc thuộc",
+                    definition: "Ngô Quyền lợi dụng thủy triều lên xuống trên sông Bạch Đằng để đóng cọc gỗ bịt sắt ngầm, nhử đoàn thuyền Nam Hán của Lưu Hoằng Thao vào trận địa và tiêu diệt hoàn toàn.",
+                    example: "Ý nghĩa: Chấm dứt vĩnh viễn ách đô hộ phương Bắc, mở ra thời kỳ độc lập tự chủ lâu dài cho dân tộc.",
+                    aiTip: "Mẹo nhớ nhanh: Mốc 938 = Ngô Quyền + Cọc Bạch Đằng + Mở đầu kỷ nguyên Độc lập.",
+                    mastered: false
+                },
+                {
+                    id: "his2",
+                    group: "K9_THONOM",
+                    category: "Lịch sử 9 • Kháng chiến chống Pháp",
+                    title: "Chiến thắng Điện Biên Phủ (07/5/1954)",
+                    subtitle: "Lừng lẫy năm châu, chấn động địa cầu",
+                    definition: "Sau 56 ngày đêm chiến đấu kiên cường qua 3 đợt tiến công, quân và dân ta đã tiêu diệt toàn bộ tập đoàn cứ điểm Điện Biên Phủ.",
+                    example: "Đập tan kế hoạch Nava, buộc thực dân Pháp phải ký Hiệp định Giơ-ne-vơ chấm dứt chiến tranh ở Đông Dương.",
+                    aiTip: "Mẹo nhớ: 56 ngày đêm (13/3 - 07/5/1954) -> Quyết định thắng lợi tại bàn đàm phán Giơ-ne-vơ.",
+                    mastered: false
+                }
+            ],
+            escapeQuestions: [
+                {
+                    group: "K6_DONGTHOAI",
+                    stationName: "Trạm 1: Sông Bạch Đằng Dậy Sóng",
+                    topic: "Lịch sử Dân tộc",
+                    context: "Năm 938, trước cuộc xâm lược của quân Nam Hán qua đường biển...",
+                    question: "Ai là người lãnh đạo nhân dân ta làm nên chiến thắng Bạch Đằng lịch sử năm 938?",
+                    options: ["A. Lý Thường Kiệt", "B. Ngô Quyền", "C. Trần Hưng Đạo", "D. Quang Trung"],
+                    correctIndex: 1,
+                    hint: "Sau chiến thắng này, ông đã xưng Vương và đóng đô ở Cổ Loa.",
+                    explanation: "Chính xác! Ngô Quyền đã làm nên chiến thắng Bạch Đằng năm 938."
+                }
+            ],
+            speedItems: LITERATURE_PRESET.speedItems
+        };
+
+        // --- KHO 8 NHÂN VẬT & CỐ VẤN AI KÈM 48+ CÂU HỎI GỢI Ý NHANH ---
+        const PERSONAS = {
+            demen: {
+                name: "Dế Mèn (Bài học đường đời đầu tiên)",
+                badge: "Khối 6 • Truyện đồng thoại",
+                avatar: "🦗",
+                role: "Nhân vật chính trong truyện đồng thoại của nhà văn Tô Hoài",
+                greeting: "Chào các bạn nhỏ Khối 6! Tôi là **Dế Mèn** đây. Thuở mới lớn, tôi từng rất tự hào về đôi càng mẫm bóng, đôi cánh dài kín xuống tận chấm đuôi của mình, nhưng cũng vì thói hung hăng ngông cuồng mà gây ra cái chết thương tâm cho anh bạn hàng xóm **Dế Choắt**. Các bạn muốn hỏi tôi điều gì về *Truyện đồng thoại* và *Bài học đường đời đầu tiên* nào?",
+                prompts: [
+                    {
+                        q: "Ngoại hình của Dế Mèn lúc mới lớn được miêu tả đẹp và khỏe mạnh như thế nào?",
+                        a: "Lúc ấy bởi tôi ăn uống điều độ và làm việc có chừng mực nên tôi chóng lớn lắm! **Đôi càng tôi mẫm bóng**, những cái vuốt ở chân, ở khoeo cứ cứng dần và nhọn hoắt. **Đôi cánh** trước kia ngắn hủn hoẳn, nay thành cái áo dài kín xuống tận chấm đuôi. Đầu tôi to ra và nổi từng tảng, rất bướng; hai cái răng đen nhánh lúc nào cũng nhai ngoàm ngoạp như hai lưỡi liềm máy làm việc! Nhà văn Tô Hoài đã kết hợp miêu tả **đặc điểm sinh học của loài dế** với **phép nhân hóa** để làm nổi bật vẻ đẹp cường tráng của một chàng thanh niên mới lớn đấy!"
+                    },
+                    {
+                        q: "Những chi tiết nào cho thấy tính cách kiêu căng, xốc nổi của Dế Mèn trước khi gặp tai họa?",
+                        a: "Nhớ lại mà tôi vẫn còn xấu hổ! Tôi đi đứng oai vệ, cà khịa với tất cả bà con trong xóm: quát mấy chị Cào Cào ngụ ngoài đầu bờ, thỉnh thoảng ngứa chân đá một cái ghẹo anh Gọng Vó lấm láp vừa ngơ ngác dưới đầm lên. Tôi tưởng mình là **tay ghê gớm, có thể sắp đứng đầu thiên hạ** rồi! Đặc biệt, tôi còn khinh thường anh Dế Choắt gầy gò, mắng anh bằng giọng kẻ cả và từ chối giúp anh đào một cái ngách thông sang nhà tôi."
+                    },
+                    {
+                        q: "Vì sao trò đùa trêu chị Cốc của cậu lại dẫn đến cái chết oan uổng của Dế Choắt?",
+                        a: "Chỉ vì muốn ra oai trước mặt Dế Choắt, tôi đã hát câu véo von trêu chị Cốc rồi nhanh chân chui tọt vào sâu trong hang nằm khểnh bắt chân chữ ngũ! Tôi đâu ngờ chị Cốc nổi giận điên cuồng, nhìn thấy Dế Choắt đang loay hoay ở cửa hang liền tưởng Dế Choắt là kẻ trêu mình nên mổ liên tiếp xuống lưng anh ấy. Khi chị Cốc bay đi, tôi bò lên thì đã quá muộn, Dế Choắt không qua khỏi..."
+                    },
+                    {
+                        q: "Tâm trạng của Dế Mèn thay đổi ra sao từ lúc trêu chị Cốc đến khi đứng trước mộ Dế Choắt?",
+                        a: "Tâm lý của tôi chuyển biến qua **4 cung bậc rất rõ**: \n1. **Lúc đầu**: Hênh hoang, đắc ý vì tưởng mình thông minh.\n2. **Khi chị Cốc mổ Dế Choắt**: Khiếp sợ, nằm im thin thít dưới đáy hang không dám bênh bạn.\n3. **Khi Dế Choắt hấp hối**: Hốt hoảng, ân hận quỳ xuống nâng đầu bạn.\n4. **Khi đứng trước nấm mộ bạn**: Đứng lặng giờ lâu, đau đớn và tỉnh ngộ sâu sắc về bài học đường đời đầu tiên!"
+                    },
+                    {
+                        q: "'Bài học đường đời đầu tiên' mà Dế Choắt để lại cho cậu có ý nghĩa gì với học sinh chúng mình?",
+                        a: "Lời khuyên của Dế Choắt chính là thông điệp cốt lõi của tác phẩm: *“Ở đời mà có thói hung hăng bậy bạ, có óc mà không biết nghĩ, sớm muộn rồi cũng mang vạ vào mình đấy.”* Với các bạn học sinh, bài học ấy nhắc nhở chúng ta: **Sống phải biết khiêm tốn, biết suy nghĩ trước khi hành động, biết yêu thương, sẻ chia với những người yếu thế quanh mình** và dũng cảm nhận lỗi để trưởng thành."
+                    },
+                    {
+                        q: "Qua nhân vật Dế Mèn, em nhận ra đặc trưng gì của thể loại Truyện đồng thoại?",
+                        a: "Từ câu chuyện của tôi, bạn sẽ nhớ ngay **3 đặc trưng vàng của Truyện đồng thoại**:\n1. **Nhân vật**: Loài vật (Dế Mèn, Dế Choắt, chị Cốc) được **nhân hóa**.\n2. **Tính chất kép**: Vừa giữ đúng tập tính sinh học của loài vật (đào hang, ăn cỏ, vũ khí là càng, mỏ...), vừa mang tâm lý, lời nói, tính cách của con người.\n3. **Mục đích**: Gửi gắm bài học đạo đức, nhân sinh nhẹ nhàng mà sâu sắc cho lứa tuổi thiếu nhi."
+                    }
+                ]
+            },
+
+            bodua: {
+                name: "Bọ Dừa & Thằn Lằn (Giọt sương đêm)",
+                badge: "Khối 6 • Truyện đồng thoại",
+                avatar: "🐞",
+                role: "Nhân vật trong truyện đồng thoại 'Giọt sương đêm' của Trần Đức Tiến",
+                greeting: "Xin chào! Tôi là **Bọ Dừa** – một thương gia cánh cứng đi làm ăn xa quê nhiều năm, còn bên cạnh tôi là anh bạn **Thằn Lằn** tốt bụng và **cụ giáo Cóc** uyên bác của xóm Bờ Giậu. Đêm ngủ trọ dưới vòm lá trúc đã làm thay đổi hoàn toàn dự định của tôi. Các bạn muốn khám phá câu chuyện *Giọt sương đêm* chứ?",
+                prompts: [
+                    {
+                        q: "Vì sao ông khách Bọ Dừa lại quyết định ngủ đêm ở ngoài vòm lá trúc thay vì vào trong nhà?",
+                        a: "Bởi vì bao năm mải mê đi buôn bán ở chốn thị thành tấp nập, tôi đã lâu không được hít thở bầu không khí thôn dã khoáng đạt. Khi đến xóm Bờ Giậu, dù anh Thằn Lằn nhiệt tình mời vào chiếc bình gốm vỡ của anh ấy nghỉ ngơi, tôi vẫn xin được mắc võng nằm ngủ ngay dưới **vòm lá trúc xanh mát** để ngắm bầu trời đêm."
+                    },
+                    {
+                        q: "Trong đêm ở xóm Bờ Giậu, những âm thanh và hình ảnh nào đã khiến Bọ Dừa thao thức không ngủ được?",
+                        a: "Đêm ở xóm Bờ Giậu yên tĩnh mà đầy sức sống! Tôi nghe thấy **tiếng gió rì rào** qua khóm trúc, **tiếng côn trùng rả rích**, ánh trăng bàng bạc chiếu qua kẽ lá và đặc biệt là nhìn thấy những giọt sương đêm bắt đầu tụ lại long lanh trên đầu ngọn lá trúc. Tất cả gợi lên một vẻ đẹp bình yên đến lạ kỳ!"
+                    },
+                    {
+                        q: "Khoảnh khắc 'giọt sương đêm lạnh toát' rơi trúng cổ đã tác động thế nào đến tâm lý Bọ Dừa?",
+                        a: "Lúc gần sáng, khi tôi vừa chợp mắt thì một **giọt sương đêm to và lạnh toát** từ ngọn lá trúc rơi bộp xuống đúng cổ tôi! Cái lạnh buốt mà tinh khiết ấy làm tôi **sực tỉnh**. Đột nhiên, bao nhiêu ký ức về quê hương bản quán – nơi có những đêm sương lạnh và vòm lá quê nhà – ùa về mãnh liệt khiến tôi nhận ra mình đã đi xa quê quá lâu rồi!"
+                    },
+                    {
+                        q: "Nhân vật Thằn Lằn và cụ giáo Cóc ở xóm Bờ Giậu thể hiện những nét tính cách đáng quý nào?",
+                        a: "• **Anh Thằn Lằn**: Vừa giữ tập tính loài thằn lằn (bò sát trên vách, đuôi dài, bắt muỗi), vừa hiện lên như một người dân quê **hiếu khách, chu đáo, chân thành và quan tâm đến người khác**.\n• **Cụ giáo Cóc**: Điềm đạm, từng trải, chỉ bằng một câu hỏi ngắn gọn (*'Chắc chú mình đi chuyến này lâu lắm mới về quê?'*) đã thấu hiểu tận đáy lòng nỗi niềm của Bọ Dừa."
+                    },
+                    {
+                        q: "Ý nghĩa biểu tượng của hình ảnh 'Giọt sương đêm' trong tác phẩm là gì?",
+                        a: "**Giọt sương đêm** không chỉ là một hiện tượng thiên nhiên bình dị nơi làng quê, mà còn là **giọt sương thức tỉnh tâm hồn**. Nó gột rửa những tất bật, lo toan của cuộc sống mưu sinh để đánh thức tình yêu quê hương, cội nguồn vốn luôn tiềm ẩn trong trái tim mỗi người."
+                    },
+                    {
+                        q: "Truyện 'Giọt sương đêm' có điểm gì giống và khác với 'Bài học đường đời đầu tiên'?",
+                        a: "• **Giống nhau**: Cả hai đều là **Truyện đồng thoại** đặc sắc, dùng nhân vật loài vật được nhân hóa để gửi gắm bài học làm người.\n• **Khác nhau**: *Bài học đường đời đầu tiên* kể по ngôi thứ nhất, giọng văn giàu kịch tính về bài học ứng xử và sự hối hận; còn *Giọt sương đêm* kể theo **ngôi thứ ba**, giọng văn nhẹ nhàng, giàu chất thơ về **nỗi nhớ quê hương và sự thức tỉnh tâm hồn**."
+                    }
+                ]
+            },
+
+            thuykieu: {
+                name: "Thúy Kiều (Truyện Kiều - Nguyễn Du)",
+                badge: "Khối 9 • Truyện thơ Nôm",
+                avatar: "🪕",
+                role: "Nhân vật trung tâm trong kiệt tác Truyện thơ Nôm bác học của Đại thi hào Nguyễn Du",
+                greeting: "Chào các sĩ tử Khối 9! Ta là **Thúy Kiều** trong *Đoạn trường tân thanh (Truyện Kiều)* của Đại thi hào Nguyễn Du. Cuộc đời ta trải qua đủ 3 chặng của Truyện thơ Nôm: **Gặp gỡ đính ước** cùng chàng Kim Trọng – **15 năm lưu lạc tai biến** – và **Đoàn tụ**. Các em muốn tìm hiểu về nghệ thuật Truyện thơ Nôm hay tâm trạng của ta qua các đoạn trích?",
+                prompts: [
+                    {
+                        q: "Trong đoạn trích 'Cảnh ngày xuân', bức tranh thiên nhiên tháng ba được Nguyễn Du miêu tả đẹp như thế nào?",
+                        a: "Chỉ với 4 câu thơ lục bát mở đầu, cụ Nguyễn Du đã vẽ nên bức tranh mùa xuân tươi mới, tinh khôi:\n*“Ngày xuân con én đưa thoi / Thiều quang chín chục đã ngoài sáu mươi / Cỏ non xanh tận chân trời / Cành lê trắng điểm một vài bông hoa.”*\nNghệ thuật **đảo ngữ** (*trắng điểm*) kết hợp gam màu hài hòa (xanh non của cỏ – trắng tinh khôi của hoa lê) làm bức tranh xuân vừa khoáng đạt vừa tràn đầy sức sống!"
+                    },
+                    {
+                        q: "Khi bị giam lỏng ở lầu Ngưng Bích, vì sao Kiều lại nhớ tới Kim Trọng trước rồi mới nhớ tới cha mẹ?",
+                        a: "Đó là sự tinh tế bậc thầy của Nguyễn Du khi thấu hiểu tâm lý của ta! Ta bán mình chuộc cha và em là đã làm tròn chữ **Hiếu** một phần, còn với chàng Kim Trọng thì ta vừa thề nguyền định ước đã phải phụ lời thề, mang món nợ chữ **Tình** đau đớn. Vì vậy, trong nỗi cô đơn nơi lầu Ngưng Bích, hình ảnh chàng Kim chờ đợi vô vọng hiện lên trước tiên, sau đó là nỗi xót thương cha mẹ già (*Quạt nồng ấp lạnh những ai đó giờ*)."
+                    },
+                    {
+                        q: "Phân tích nghệ thuật 'Tả cảnh ngụ tình' trong 8 câu cuối đoạn 'Kiều ở lầu Ngưng Bích'?",
+                        a: "Tám câu thơ cuối chia làm **4 bức tranh tâm cảnh** nối tiếp qua điệp ngữ **'Buồn trông'** tăng cấp dần:\n1. *Cánh buồm thấp thoáng xa xa* ➔ Nỗi nhớ quê hương, gia đình渺茫.\n2. *Hoa trôi man mác biết là về đâu* ➔ Xót xa cho thân phận lênh đênh, vô định.\n3. *Nội cỏ rầu rầu, chân mây mặt đất một màu xanh xanh* ➔ Tương lai mờ mịt, héo úa không lối thoát.\n4. *Gió cuốn mặt duềnh, ầm ầm tiếng sóng kêu quanh ghế ngồi* ➔ Nỗi kinh hoàng, tuyệt vọng trước tai họa sắp ập xuống đời mình!"
+                    },
+                    {
+                        q: "Trong đoạn 'Kim Kiều trọng hội' (Đoàn tụ), vì sao Kiều quyết định chuyển tình yêu đôi lứa thành tình tri kỷ?",
+                        a: "Sau 15 năm lưu lạc chịu bao tủi nhục, khi được đoàn tụ cùng chàng Kim Trọng, ta vô cùng cảm kích tấm lòng thủy chung, cao thượng của chàng (*Chữ trinh đáng giá nghìn vàng / Đuốc hoa chẳng thẹn với chàng mai xưa*). Nhưng vì mặc cảm bản thân đã qua nhiều phen chìm nổi và trân trọng sự thanh cao của tình yêu, ta đã xin chàng chuyển duyên cầm sắt thành **duyên cầm kỳ (tri âm, tri kỷ)**."
+                    },
+                    {
+                        q: "Vì sao nói 'Truyện Kiều' là đỉnh cao của dòng Truyện thơ Nôm bác học Việt Nam?",
+                        a: "Bởi vì *Truyện Kiều* hội tụ trọn vẹn tinh hoa của **Truyện thơ Nôm bác học**:\n1. **Ngôn ngữ**: Đưa chữ Nôm và thể thơ lục bát dân tộc đạt tới độ điêu luyện, kết hợp từ ngữ dân gian với điển tích, điển cố uyên bác.\n2. **Nghệ thuật xây dựng nhân vật**: Không chỉ miêu tả hành động mà đi sâu khám phá **thế giới nội tâm phức tạp** qua ngôn ngữ độc thoại nội tâm và bút pháp tả cảnh ngụ tình.\n3. **Giá trị tư tưởng**: Kết tinh chủ nghĩa nhân đạo sâu sắc."
+                    },
+                    {
+                        q: "Cách phân tích ngôn ngữ độc thoại nội tâm của nhân vật trong Truyện thơ Nôm?",
+                        a: "Khi phân tích **độc thoại nội tâm** (như lời Kiều tự nhủ ở lầu Ngưng Bích), các em hãy chỉ ra:\n• **Dấu hiệu nhận biết**: Các từ ngữ chỉ suy nghĩ, câu hỏi tu từ nhân vật tự hỏi chính mình (*Nhớ người... Xót người... Biết là về đâu?*).\n• **Tác dụng**: Giúp người đọc thấu suốt những giằng xé, đau đớn thầm kín và vẻ đẹp nhân cách (vị tha, hiếu thảo, thủy chung) của nhân vật."
+                    }
+                ]
+            },
+
+            lucvantien: {
+                name: "Lục Vân Tiên & Kiều Nguyệt Nga",
+                badge: "Khối 9 • Truyện thơ Nôm",
+                avatar: "⚔️",
+                role: "Nhân vật trong 'Truyện Lục Vân Tiên' của nhà thơ Nguyễn Đình Chiểu",
+                greeting: "Chào các bạn học sinh Khối 9! Ta là **Lục Vân Tiên**, còn đây là nàng **Kiều Nguyệt Nga**. Câu chuyện của chúng ta được cụ Đồ Chiểu viết bằng thể thơ lục bát mộc mạc, hào sảng của đất Nam Bộ. Các em muốn tìm hiểu về hành động đánh cướp Phong Lai, lẽ sống trọng nghĩa khinh tài hay đặc điểm Truyện thơ Nôm Nguyễn Đình Chiểu?",
+                prompts: [
+                    {
+                        q: "Hình ảnh Lục Vân Tiên một mình đánh cướp Phong Lai được khắc họa hào hùng như thế nào?",
+                        a: "Khi thấy bọn cướp Phong Lai hung hãn hại dân lành, dù chỉ có một mình và không có vũ khí trong tay, ta lập tức **'bẻ cây làm gậy nhằm làng xông vô'**, thẳng thắn thách đấu tên đầu đảng Phong Lai. Cụ Đồ Chiểu đã dùng bút pháp so sánh với điển cố lịch sử (*Vân Tiên tả đột hữu xông / Khác nào Triệu Tử phá vòng Đương Dương*) để khắc họa khí phách anh hùng áp đảo quần hùng!"
+                    },
+                    {
+                        q: "Thái độ của Lục Vân Tiên với Kiều Nguyệt Nga sau khi dẹp tan bọn cướp thể hiện phẩm chất gì?",
+                        a: "Sau khi đánh cướp xong, nghe tiếng khóc trong xe, ta ân cần hỏi han (*Ai than khóc ở trong xe nầy?*). Khi biết trong xe là hai cô gái trẻ, ta liền giữ lễ tiết quân tử: **'Khoan khoan ngồi đó chớ ra / Nàng là phận gái, ta là phận trai'**. Và khi nàng Nguyệt Nga ngỏ ý muốn đền ơn, ta mỉm cười từ chối ngay vì làm việc nghĩa là bổn phận của người anh hùng, không bao giờ màng chuyện báo đáp!"
+                    },
+                    {
+                        q: "Hai câu thơ 'Nhớ câu kiến ngãi bất vi / Làm người thế ấy cũng phi anh hùng' có ý nghĩa gì?",
+                        a: "**'Kiến ngãi bất vi'** nghĩa là thấy việc nghĩa mà không làm. Hai câu thơ ấy là tuyên ngôn sống của ta và cũng là quan niệm đạo đức nhân nghĩa của cụ Nguyễn Đình Chiểu: Một người chân chính khi thấy kẻ yếu bị ức hiếp, thấy việc bất bằng mà làm ngơ thì không xứng đáng gọi là bậc anh hùng trượng phu!"
+                    },
+                    {
+                        q: "Nhân vật Kiều Nguyệt Nga hiện lên với những vẻ đẹp truyền thống nào qua lời nói và cách ứng xử?",
+                        a: "🌸 **Kiều Nguyệt Nga đáp:** Qua lời thưa gửi với chàng Vân Tiên, thiếp được cụ Đồ Chiểu khắc họa là một cô gái **khuê các, thùy mị, nết na, có học thức và đặc biệt là vô cùng trọng ân nghĩa**. Cách xưng hô khiêm nhường (*quân tử - tiện thiếp*) cùng nỗi trăn trở *'Lấy chi cho phỉ tấm lòng cùng ngươi'* đã mở đầu cho mối nhân duyên thủy chung son sắt suốt cả tác phẩm."
+                    },
+                    {
+                        q: "Điểm khác biệt về nghệ thuật xây dựng nhân vật giữa 'Truyện Lục Vân Tiên' và 'Truyện Kiều' là gì?",
+                        a: "Đây là câu hỏi nâng cao cực hay cho học sinh lớp 9!\n• Trong **Truyện Kiều**, Nguyễn Du thiên về khắc họa **đời sống nội tâm tinh tế** qua ngôn ngữ độc thoại và tả cảnh ngụ tình.\n• Còn trong **Truyện Lục Vân Tiên**, Nguyễn Đình Chiểu lại khắc họa nhân vật chủ yếu qua **CỬ CHỈ, HÀNH ĐỘNG và NGÔN NGỮ ĐỐI THOẠI** bộc trực, giàu tính chất kể chuyện dân gian Nam Bộ (để nhân dân dễ nghe, dễ nhớ, dễ truyền tụng)."
+                    },
+                    {
+                        q: "Cốt truyện của 'Truyện Lục Vân Tiên' có tuân theo mô-típ 3 phần của Truyện thơ Nôm không?",
+                        a: "Có chứ! *Truyện Lục Vân Tiên* là mẫu mực của mô-típ **Gặp gỡ – Tai biến – Đoàn tụ**:\n1. **Gặp gỡ**: Vân Tiên cứu Kiều Nguyệt Nga, hai người cảm mến và trao thơ.\n2. **Tai biến**: Vân Tiên bị mù mắt trên đường đi thi, bị Trịnh Hâm hãm hại đẩy xuống sông; Nguyệt Nga bị ép cống giặc Ô Qua phải ôm bức hình Vân Tiên nhảy xuống sông tự vẫn.\n3. **Đoàn tụ**: Nhờ thần linh và người hiền cứu giúp, Vân Tiên sáng mắt, đỗ Trạng nguyên, đánh giặc Ô Qua và đoàn tụ hạnh phúc cùng Nguyệt Nga!"
+                    }
+                ]
+            },
+
+            hoangtube: {
+                name: "Hoàng Tử Bé & Cáo (Văn 6)",
+                badge: "Khối 6 • Truyện đồng thoại / Văn học nước ngoài",
+                avatar: "👑",
+                role: "Nhân vật trong tác phẩm của nhà văn Pháp Antoine de Saint-Exupéry",
+                greeting: "Chào bạn nhỏ từ hành tinh Trái Đất! Mình là **Hoàng tử bé** đến từ tiểu hành tinh B612, còn đây là bạn **Cáo** thông thái. Cuộc gặp gỡ giữa mình và Cáo đã dạy mình bài học tuyệt đẹp về tình bạn và sự **'cảm hóa'**. Bạn muốn hỏi tụi mình điều gì nào?",
+                prompts: [
+                    {
+                        q: "Theo lời của Cáo, từ 'cảm hóa' có ý nghĩa thực sự là gì?",
+                        a: "🦊 **Cáo đáp:** 'Cảm hóa' là một điều bị lãng quên quá lâu rồi, nó có nghĩa là **'tạo dựng những mối liên hệ'**. Trước khi bạn cảm hóa tớ, bạn chỉ là một cậu bé giống như trăm nghìn cậu bé khác. Nhưng nếu bạn cảm hóa tớ, tụi mình sẽ cần đến nhau, và **bạn sẽ trở thành duy nhất trên đời đối với tớ!**"
+                    },
+                    {
+                        q: "Vì sao bông hồng trên tiểu hành tinh B612 lại quan trọng hơn 5000 bông hồng trong vườn?",
+                        a: "Bởi vì 5000 bông hồng trong vườn kia tuy đẹp nhưng trống rỗng, chưa ai cảm hóa chúng cả. Còn bông hồng của mình thì chính tay mình đã tưới nước, đậy lồng kính chắn gió, diệt sâu bọ và lắng nghe cả lúc nàng thở than hay im lặng. **Chính thời gian mình dành cho bông hồng đã làm nàng trở nên quan trọng đến thế!**"
+                    },
+                    {
+                        q: "Bí mật giản dị mà Cáo tặng cho Hoàng tử bé trước lúc chia tay là gì?",
+                        a: "🦊 **Cáo mỉm cười:** Bí mật của tớ rất giản dị: **“Người ta chỉ nhìn thấy thật rõ ràng bằng trái tim. Cái cốt yếu thì con mắt thường không nhìn thấy được.”** Và đừng bao giờ quên rằng: Bạn phải chịu trách nhiệm mãi mãi về những gì bạn đã cảm hóa!"
+                    },
+                    {
+                        q: "Nhân vật Cáo trong 'Hoàng tử bé' mang những nét đặc trưng nào của truyện đồng thoại hiện đại?",
+                        a: "Cáo vừa có tập tính của loài cáo hoang dã (sợ thợ săn, thích săn gà, sống trong hang dưới gốc táo), lại vừa mang trí tuệ triết lý sâu sắc của một người thầy, người bạn dạy cho Hoàng tử bé – và cho cả người đọc – cách yêu thương và kết nối bằng trái tim."
+                    }
+                ]
+            },
+
+            thanhgiong: {
+                name: "Thánh Gióng (Truyền thuyết - Văn 6)",
+                badge: "Khối 6 • Truyện truyền thuyết",
+                avatar: "🐎",
+                role: "Hình tượng người anh hùng chống giặc ngoại xâm trong Truyền thuyết dân gian",
+                greeting: "Chào các em học sinh Khối 6! Ta là **Thánh Gióng (Phù Đổng Thiên Vương)**. Câu chuyện về ta là sự hòa quyện giữa cốt lõi lịch sử thời Hùng Vương và trí tưởng tượng kỳ ảo của dân tộc. Các em muốn hỏi về chi tiết nào trong truyền thuyết?",
+                prompts: [
+                    {
+                        q: "Vì sao tiếng nói đầu tiên của Gióng sau 3 năm im lặng lại là tiếng nói đòi đi đánh giặc?",
+                        a: "Lên ba tuổi ta vẫn chưa biết nói, biết cười, đặt đâu nằm đấy. Nhưng vừa nghe tiếng sứ giả rao tìm người tài cứu nước, ta bỗng cất tiếng nói đầu tiên đòi ngựa sắt, roi sắt, áo giáp sắt để đánh giặc! Chi tiết kỳ ảo ấy ca ngợi **ý thức yêu nước trỗi dậy kỳ diệu khi Tổ quốc lâm nguy**."
+                    },
+                    {
+                        q: "Chi tiết bà con làng xóm góp gạo nuôi Gióng lớn nhanh như thổi mang ý nghĩa gì?",
+                        a: "Một mình cha mẹ nuôi không đủ, cả làng xóm cùng vui lòng góp gạo, góp cà, may vải cho ta. Điều đó khẳng định: **Sức mạnh của người anh hùng Thánh Gióng được nuôi dưỡng từ lòng dân, là sức mạnh đoàn kết của cả cộng đồng dân tộc!**"
+                    },
+                    {
+                        q: "Khi roi sắt gãy, hành động Gióng nhổ cụm tre cạnh đường quật vào giặc thể hiện điều gì?",
+                        a: "Vũ khí sắt gãy thì ta dùng ngay cây cỏ non sông để đánh giặc! Ngày nay những bụi tre ngà ở huyện Gia Bình có màu vàng óng chính là dấu tích lửa ngựa sắt năm xưa – một đặc trưng tiêu biểu của **Truyền thuyết giải thích nguồn gốc di tích lịch sử**."
+                    }
+                ]
+            },
+
+            vunuong: {
+                name: "Vũ Nương (Truyện truyền kỳ - Văn 9)",
+                badge: "Khối 9 • Truyện truyền kỳ",
+                avatar: "🕯️",
+                role: "Nhân vật chính trong 'Chuyện người con gái Nam Xương' của Nguyễn Dữ",
+                greeting: "Chào các em học sinh Khối 9! Ta là **Vũ Thị Thiết (Vũ Nương)** trong tập *Truyền kỳ mạn lục* của Nguyễn Dữ. Cuộc đời ta là sự đan xen giữa bi kịch gia đình hiện thực và thế giới kỳ ảo dưới thủy cung của Linh Phi. Các em muốn hỏi điều gì về tác phẩm?",
+                prompts: [
+                    {
+                        q: "Vẻ đẹp phẩm hạnh của Vũ Nương được thể hiện như thế nào trước khi chịu nỗi oan?",
+                        a: "Khi ở cùng chồng, biết Trương Sinh vốn có tính đa nghi, ta luôn giữ gìn khuôn phép, không để lúc nào vợ chồng phải đến thất hòa. Khi chồng đi lính, ta một mình sinh con, hết lòng phụng dưỡng mẹ chồng lúc đau ốm và lo ma chay chu đáo như với cha mẹ ruột."
+                    },
+                    {
+                        q: "Ý nghĩa của chi tiết 'chiếc bóng trên vách' trong việc tạo dựng kịch tính truyện?",
+                        a: "Vì thương con nhỏ thiếu vắng cha, mỗi đêm ta thường chỉ vào cái bóng của chính mình trên vách đèn và bảo bé Đản đó là cha Đản. Ngờ đâu lời nói ngây thơ của con trẻ lại trở thành **nút thắt** thổi bùng cơn ghen mù quáng của Trương Sinh, và về sau cũng chính chiếc bóng ấy trở thành **mở nút** giải oan cho ta!"
+                    },
+                    {
+                        q: "Yếu tố kỳ ảo ở cuối truyện (Vũ Nương dưới thủy cung và hiện về trên bến Hoàng Giang) có ý nghĩa gì?",
+                        a: "Yếu tố kỳ ảo giúp **hoàn chỉnh vẻ đẹp nhân cách của ta** (dù ở thủy cung vẫn nặng lòng với gia đình, quê hương) và thể hiện ước mơ công lý của nhân dân. Tuy nhiên, việc ta chỉ hiện về giữa dòng sông rồi biến mất mãi mãi (*Bóng nàng loang loáng mờ nhạt dần...*) vẫn giữ nguyên tính bi kịch hiện thực: hạnh phúc đã tan vỡ không thể hàn gắn!"
+                    }
+                ]
+            },
+
+            covan: {
+                name: "Cố Vấn Ngữ Văn AI Sky-Line",
+                badge: "Chuyên gia Khối 6 & Khối 9",
+                avatar: "🎓",
+                role: "Trợ lý AI chuyên giải đáp Tri thức ngữ văn, Tiếng Việt & Phương pháp làm văn",
+                greeting: "Xin chào học sinh Sky-Line! Thầy/Cô **Cố Vấn AI** luôn sẵn sàng hỗ trợ các em so sánh **Truyện đồng thoại (Lớp 6)** với **Truyện thơ Nôm (Lớp 9)**, phân biệt các biện pháp tu từ và cung cấp dàn ý viết đoạn văn/bài văn chuẩn cấu trúc!",
+                prompts: [
+                    {
+                        q: "Bảng so sánh nhanh Truyện đồng thoại (Khối 6) và Truyện thơ Nôm (Khối 9)?",
+                        a: "Em hãy nhớ bảng đối chiếu cực ngắn gọn này:\n• **Truyện đồng thoại (K6)**: Viết bằng **văn xuôi** cho thiếu nhi | Nhân vật là **loài vật/đồ vật nhân hóa** (Dế Mèn, Bọ Dừa) | Gửi gắm bài học ứng xử, tình bạn, tình quê hương.\n• **Truyện thơ Nôm (K9)**: Viết bằng **thơ chữ Nôm (lục bát)** | Nhân vật là **con người** với 2 tuyến Thiện - Ác (Thúy Kiều, Lục Vân Tiên) | Cốt truyện 3 phần: *Gặp gỡ - Tai biến - Đoàn tụ*."
+                    },
+                    {
+                        q: "Dàn ý chuẩn viết bài văn phân tích một nhân vật trong Truyện đồng thoại (Lớp 6)?",
+                        a: "**Dàn ý 3 phần chuẩn SGK Ngữ văn 6:**\n1. **Mở bài**: Giới thiệu tên truyện đồng thoại, tên tác giả và ấn tượng chung về nhân vật (VD: Dế Mèn hoặc Bọ Dừa).\n2. **Thân bài**:\n   - *Đặc điểm ngoại hình, tập tính loài vật* được miêu tả sinh động ra sao?\n   - *Tính cách, tâm lý như con người* thể hiện qua cử chỉ, hành động, lời nói và suy nghĩ như thế nào?\n   - *Nghệ thuật nhân hóa* và bài học cuộc sống mà nhà văn gửi gắm qua nhân vật.\n3. **Kết bài**: Khẳng định sức hấp dẫn của nhân vật và bài học em rút ra cho bản thân."
+                    },
+                    {
+                        q: "Dàn ý chuẩn phân tích một đoạn trích Truyện thơ Nôm (Lớp 9)?",
+                        a: "**Dàn ý chuẩn cho học sinh Khối 9:**\n1. **Mở bài**: Giới thiệu tác giả, tác phẩm Truyện thơ Nôm (*Truyện Kiều* hoặc *Truyện Lục Vân Tiên*), vị trí đoạn trích và luận điểm chính.\n2. **Thân bài**:\n   - *Luận điểm 1 (Nội dung)*: Phân tích bức tranh thiên nhiên hoặc vẻ đẹp phẩm chất, tâm trạng nhân vật trong đoạn trích.\n   - *Luận điểm 2 (Nghệ thuật đặc trưng Thơ Nôm)*: Chỉ rõ thể thơ lục bát, ngôn ngữ bình dân hay bác học (điển tích, ước lệ), nghệ thuật tả cảnh ngụ tình, ngôn ngữ đối thoại hay độc thoại nội tâm.\n   - *Đánh giá giá trị nhân đạo/hiện thực* của tác giả.\n3. **Kết bài**: Khẳng định sức sống của đoạn trích và thông điệp với hôm nay."
+                    },
+                    {
+                        q: "Mẹo phân biệt Ẩn dụ và Hoán dụ trong 5 giây không bao giờ nhầm?",
+                        a: "Chỉ cần nhớ **2 chữ T**:\n• **Ẩn dụ = Tương đồng (Giống nhau)**: Giữa A và B có nét giống nhau về hình thức, phẩm chất, có thể thêm từ *'giống như'* vào giữa (VD: *Mặt trời trong lăng* -> Bác Hồ rực rỡ, ấm áp như mặt trời).\n• **Hoán dụ = Tương cận (Gần gũi, đi liền nhau)**: Giữa A và B không giống nhau về hình dáng mà luôn đi đôi với nhau trong thực tế (VD: *Áo chàm* đi liền với người dân Việt Bắc; *Bàn tay* là bộ phận của người lao động)."
+                    },
+                    {
+                        q: "Sự khác nhau giữa Truyện thơ Nôm bình dân và Truyện thơ Nôm bác học?",
+                        a: "• **Truyện thơ Nôm bình dân**: Thường khuyết danh (không rõ tên tác giả), lấy đề tài từ cổ tích/dân gian, ngôn ngữ mộc mạc gần lời ăn tiếng nói hằng ngày (VD: *Phạm Tải - Ngọc Hoa, Tống Trân - Cúc Hoa*).\n• **Truyện thơ Nôm bác học**: Do các nho sĩ có tên tuổi sáng tác, ngôn ngữ trau chuốt điêu luyện, sử dụng nhiều điển tích, điển cố và miêu tả nội tâm nhân vật cực kỳ sâu sắc (VD: *Truyện Kiều* của Nguyễn Du)."
+                    },
+                    {
+                        q: "Cách làm câu hỏi Thực hành Tiếng Việt: Mở rộng thành phần chính của câu bằng cụm từ (Lớp 6)?",
+                        a: "Khi đề bài yêu cầu **tìm hoặc viết câu có thành phần chính mở rộng bằng cụm từ**, em thực hiện 2 bước:\n1. Xác định Chủ ngữ (CN) và Vị ngữ (VN) của câu.\n2. Kiểm tra xem CN hoặc VN là một **Cụm danh từ** (có số từ *những, các, một* ở trước + danh từ trung tâm + từ miêu tả ở sau) hay **Cụm động từ / Cụm tính từ**. Ví dụ: *'Những giọt sương đêm lạnh buốt / đã đánh thức Bọ Dừa'*."
+                    }
+                ]
+            }
+        };
+
+        // --- GLOBAL APP STATE ---
+        let appData = JSON.parse(JSON.stringify(LITERATURE_PRESET));
+        let globalFilter = 'ALL'; // ALL, K6_DONGTHOAI, K6_OTHER, K9_THONOM, K9_OTHER
+        let sparkScore = 0;
+        let soundEnabled = true;
+        let currentCodename = "Hiệp Sĩ Dế Mèn (K6)";
+
+        // Escape Room State
+        let currentStationIndex = 0;
+        let escapeStreak = 0;
+        let firstTryCorrectCount = 0;
+        let stationAnswered = false;
+        let stationAttemptedWrong = false;
+
+        // Speed Game State
+        let speedTimer = null;
+        let speedTimeLeft = 60;
+        let speedScore = 0;
+        let currentSpeedItemIndex = 0;
+        let isSpeedPlaying = false;
+
+        // AI Persona State
+        let currentPersonaKey = 'demen';
+
+        // --- WEB AUDIO SYNTHESIZER ---
+        let audioCtx = null;
+        function playTone(type) {
+            if (!soundEnabled) return;
+            try {
+                if (!audioCtx) audioCtx = new (window.AudioContext || window.webkitAudioContext)();
+                const now = audioCtx.currentTime;
+                const osc = audioCtx.createOscillator();
+                const gain = audioCtx.createGain();
+                osc.connect(gain);
+                gain.connect(audioCtx.destination);
+
+                if (type === 'flip') {
+                    osc.frequency.setValueAtTime(380, now);
+                    osc.frequency.exponentialRampToValueAtTime(560, now + 0.08);
+                    gain.gain.setValueAtTime(0.08, now);
+                    gain.gain.exponentialRampToValueAtTime(0.01, now + 0.08);
+                    osc.start(now);
+                    osc.stop(now + 0.08);
+                } else if (type === 'correct') {
+                    osc.type = 'triangle';
+                    osc.frequency.setValueAtTime(523.25, now);
+                    osc.frequency.setValueAtTime(659.25, now + 0.09);
+                    osc.frequency.setValueAtTime(783.99, now + 0.18);
+                    gain.gain.setValueAtTime(0.14, now);
+                    gain.gain.exponentialRampToValueAtTime(0.01, now + 0.35);
+                    osc.start(now);
+                    osc.stop(now + 0.35);
+                } else if (type === 'wrong') {
+                    osc.type = 'sawtooth';
+                    osc.frequency.setValueAtTime(220, now);
+                    osc.frequency.linearRampToValueAtTime(140, now + 0.22);
+                    gain.gain.setValueAtTime(0.1, now);
+                    gain.gain.exponentialRampToValueAtTime(0.01, now + 0.24);
+                    osc.start(now);
+                    osc.stop(now + 0.24);
+                } else if (type === 'victory') {
+                    [523.25, 659.25, 783.99, 1046.5].forEach((freq, idx) => {
+                        const o = audioCtx.createOscillator();
+                        const g = audioCtx.createGain();
+                        o.type = 'triangle';
+                        o.connect(g);
+                        g.connect(audioCtx.destination);
+                        o.frequency.setValueAtTime(freq, now + idx * 0.1);
+                        g.gain.setValueAtTime(0.14, now + idx * 0.1);
+                        g.gain.exponentialRampToValueAtTime(0.01, now + idx * 0.1 + 0.3);
+                        o.start(now + idx * 0.1);
+                        o.stop(now + idx * 0.1 + 0.3);
+                    });
+                }
+            } catch (e) {}
+        }
+
+        function toggleSound() {
+            soundEnabled = !soundEnabled;
+            document.getElementById('soundIcon').className = soundEnabled ? 'fa-solid fa-volume-high' : 'fa-solid fa-volume-xmark text-slate-500';
+            showToast(soundEnabled ? "Đã bật âm thanh tương tác" : "Đã tắt âm thanh");
+        }
+
+        function changeCodename(val) {
+            const [icon, name] = val.split('|');
+            document.getElementById('currentAvatarIcon').textContent = icon;
+            currentCodename = name;
+            showToast(`Xin chào ${name}!`);
+        }
+
+        function addSparkPoints(pts) {
+            sparkScore += pts;
+            document.getElementById('headerSparkScore').textContent = sparkScore;
+        }
+
+        // --- GLOBAL TOPIC FILTER ---
+        const FILTER_LABELS = {
+            'ALL': 'Đang hiển thị: Tất cả chuyên đề Khối 6 & Khối 9',
+            'K6_DONGTHOAI': 'Đang lọc trọng tâm: 🦗 Khối 6 – Truyện đồng thoại (Dế Mèn, Giọt sương đêm...)',
+            'K6_OTHER': 'Đang lọc: 📚 Khối 6 – Truyền thuyết, Cổ tích, Thơ & Biện pháp tu từ',
+            'K9_THONOM': 'Đang lọc trọng tâm: 🪕 Khối 9 – Truyện thơ Nôm (Truyện Kiều, Lục Vân Tiên...)',
+            'K9_OTHER': 'Đang lọc: 🕯️ Khối 9 – Truyện truyền kỳ, Song thất lục bát & Nghị luận'
+        };
+
+        function setGlobalFilter(filterKey) {
+            globalFilter = filterKey;
+            ['ALL', 'K6_DONGTHOAI', 'K6_OTHER', 'K9_THONOM', 'K9_OTHER'].forEach(k => {
+                const btn = document.getElementById(`gFilter-${k}`);
+                if (k === filterKey) {
+                    btn.className = "g-filter-btn px-3 py-1.5 rounded-lg text-xs font-extrabold bg-cyan-400 text-slate-950 shadow-sm transition";
+                } else {
+                    btn.className = "g-filter-btn px-3 py-1.5 rounded-lg text-xs font-semibold bg-slate-800 text-slate-300 hover:bg-slate-700 transition";
+                }
+            });
+            document.getElementById('currentFilterLabel').textContent = FILTER_LABELS[filterKey] || '';
+            renderFlashcards();
+            currentStationIndex = 0;
+            renderEscapeGame();
+            playTone('flip');
+        }
+
+        // --- TAB SWITCHING ---
+        function switchTab(tabId) {
+            ['review', 'arena', 'ai-mentor', 'teacher'].forEach(t => {
+                document.getElementById(`tab-${t}`).classList.add('hidden');
+                const btn = document.getElementById(`tabBtn-${t}`);
+                if (t === 'teacher') {
+                    btn.className = "tab-btn flex items-center gap-2 px-4 py-2.5 rounded-xl font-bold text-xs sm:text-sm transition-all text-emerald-300 bg-emerald-950/50 hover:bg-emerald-900/60 border border-emerald-500/30";
+                } else {
+                    btn.className = "tab-btn flex items-center gap-2 px-4 py-2.5 rounded-xl font-bold text-xs sm:text-sm transition-all text-slate-300 hover:bg-slate-800 border border-transparent";
+                }
+            });
+            document.getElementById(`tab-${tabId}`).classList.remove('hidden');
+            const activeBtn = document.getElementById(`tabBtn-${tabId}`);
+            activeBtn.className = "tab-btn flex items-center gap-2 px-4 py-2.5 rounded-xl font-extrabold text-xs sm:text-sm transition-all bg-gradient-to-r from-cyan-400 to-blue-500 text-slate-950 shadow-md shadow-cyan-500/20";
+        }
+
+        // --- TRẠM 1: RENDER 3D FLASHCARDS ---
+        function getFilteredFlashcards() {
+            const q = (document.getElementById('flashcardSearchInput').value || '').toLowerCase().trim();
+            return appData.flashcards.filter(c => {
+                const matchGroup = globalFilter === 'ALL' || c.group === globalFilter;
+                const matchSearch = !q ||
+                    c.title.toLowerCase().includes(q) ||
+                    c.definition.toLowerCase().includes(q) ||
+                    c.example.toLowerCase().includes(q) ||
+                    c.category.toLowerCase().includes(q);
+                return matchGroup && matchSearch;
+            });
+        }
+
+        function renderFlashcards() {
+            const grid = document.getElementById('flashcardsGrid');
+            const filtered = getFilteredFlashcards();
+            document.getElementById('badgeFlashcardCount').textContent = `${filtered.length} thẻ`;
+
+            if (filtered.length === 0) {
+                grid.innerHTML = `
+                    <div class="col-span-full bg-slate-900/80 rounded-3xl p-10 text-center border border-slate-800 space-y-2">
+                        <div class="text-3xl">🔍</div>
+                        <h4 class="font-bold text-white">Không tìm thấy thẻ phù hợp với từ khóa</h4>
+                        <p class="text-xs text-slate-400">Hãy bấm chọn "Tất cả (Khối 6 & 9)" hoặc xóa từ khóa tìm kiếm nhé.</p>
+                    </div>
+                `;
+                updateMasteryBar();
+                return;
+            }
+
+            grid.innerHTML = filtered.map(card => {
+                const isNom = card.group === 'K9_THONOM';
+                const isDongThoai = card.group === 'K6_DONGTHOAI';
+                const badgeStyle = isDongThoai
+                    ? 'bg-cyan-500/20 text-cyan-300 border-cyan-400/40'
+                    : isNom
+                    ? 'bg-purple-500/20 text-purple-300 border-purple-400/40'
+                    : 'bg-amber-500/20 text-amber-300 border-amber-400/40';
+
+                return `
+                <div class="perspective-1000 h-[350px] cursor-pointer group" onclick="flipCard('${card.id}')">
+                    <div id="cardInner-${card.id}" class="relative w-full h-full transform-style-3d">
+                        <!-- FRONT -->
+                        <div class="absolute inset-0 backface-hidden bg-slate-900/95 rounded-3xl p-6 border-2 ${card.mastered ? 'border-emerald-400' : 'border-cyan-500/30 hover:border-cyan-400'} flex flex-col justify-between transition shadow-lg">
+                            <div class="space-y-3">
+                                <div class="flex items-center justify-between gap-2">
+                                    <span class="text-[11px] font-extrabold px-2.5 py-1 rounded-full border ${badgeStyle}">${card.category}</span>
+                                    ${card.mastered
+                                        ? '<span class="text-xs font-extrabold text-emerald-400"><i class="fa-solid fa-circle-check"></i> Đã thuộc</span>'
+                                        : '<span class="text-xs text-slate-400"><i class="fa-regular fa-hand-pointer mr-1"></i>Lật 3D</span>'
+                                    }
+                                </div>
+                                <div>
+                                    <h3 class="text-base sm:text-lg font-extrabold text-white group-hover:text-cyan-300 transition leading-snug">${card.title}</h3>
+                                    <p class="text-xs font-semibold text-purple-300 mt-1">${card.subtitle || ''}</p>
+                                </div>
+                                <p class="text-xs sm:text-sm text-slate-300 leading-relaxed">
+                                    ${card.definition}
+                                </p>
+                            </div>
+                            <div class="pt-3 border-t border-slate-800 flex items-center justify-between">
+                                <span class="text-xs font-bold text-cyan-300 flex items-center gap-1.5">
+                                    <i class="fa-solid fa-rotate"></i> Xem Ví dụ & Mẹo AI
+                                </span>
+                                <button onclick="toggleMastered(event, '${card.id}')" class="px-3 py-1.5 rounded-xl text-xs font-extrabold transition ${card.mastered ? 'bg-emerald-500/20 text-emerald-300 border border-emerald-500/40' : 'bg-slate-800 hover:bg-emerald-500 hover:text-slate-950 text-slate-300'}">
+                                    ${card.mastered ? '✓ Đã nhớ kỹ' : '+ Đánh dấu thuộc'}
+                                </button>
+                            </div>
+                        </div>
+
+                        <!-- BACK -->
+                        <div class="absolute inset-0 backface-hidden rotate-y-180 bg-gradient-to-br from-indigo-950 via-slate-900 to-slate-950 rounded-3xl p-6 border-2 border-purple-400/70 flex flex-col justify-between shadow-xl">
+                            <div class="space-y-3 overflow-y-auto pr-1">
+                                <div class="flex items-center justify-between">
+                                    <span class="text-[11px] font-extrabold uppercase tracking-wider text-amber-300"><i class="fa-solid fa-book-open mr-1"></i> Dẫn chứng & Mẹo Ghi Nhớ AI</span>
+                                    <span class="text-xs text-cyan-300">Lật lại ↺</span>
+                                </div>
+                                <div class="bg-slate-950/80 rounded-2xl p-3.5 text-xs leading-relaxed text-slate-200 border border-slate-800">
+                                    <strong class="text-cyan-300 block mb-1">📖 Dẫn chứng SGK:</strong>
+                                    ${card.example}
+                                </div>
+                                <div class="bg-amber-500/15 rounded-2xl p-3.5 text-xs leading-relaxed text-amber-200 border border-amber-400/30">
+                                    <strong class="text-amber-300 block mb-1"><i class="fa-solid fa-robot mr-1"></i>Mẹo AI nhớ nhanh:</strong>
+                                    ${card.aiTip}
+                                </div>
+                            </div>
+                            <div class="pt-2 flex items-center justify-between border-t border-slate-800">
+                                <button onclick="jumpToPersonaFromCard(event, '${card.group}')" class="text-xs font-bold text-cyan-300 hover:underline">
+                                    <i class="fa-solid fa-comments mr-1"></i>Đối thoại nhân vật
+                                </button>
+                                <button onclick="toggleMastered(event, '${card.id}')" class="px-3 py-1 rounded-xl text-xs font-extrabold bg-emerald-400 text-slate-950">
+                                    ${card.mastered ? '✓ Đã thuộc' : 'Đánh dấu Đã thuộc'}
+                                </button>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+                `;
+            }).join('');
+
+            updateMasteryBar();
+        }
+
+        function flipCard(cardId) {
+            playTone('flip');
+            const el = document.getElementById(`cardInner-${cardId}`);
+            if (el) el.classList.toggle('flipped');
+            addSparkPoints(2);
+        }
+
+        function shuffleFlashcards() {
+            appData.flashcards.sort(() => Math.random() - 0.5);
+            playTone('flip');
+            renderFlashcards();
+            showToast("Đã trộn ngẫu nhiên bộ thẻ 3D!");
+        }
+
+        function toggleMastered(event, cardId) {
+            event.stopPropagation();
+            const card = appData.flashcards.find(c => c.id === cardId);
+            if (card) {
+                card.mastered = !card.mastered;
+                if (card.mastered) {
+                    playTone('correct');
+                    addSparkPoints(10);
+                    showToast(`+10 Spark! Đã nắm vững "${card.title}"`);
+                }
+                renderFlashcards();
+            }
+        }
+
+        function updateMasteryBar() {
+            const total = appData.flashcards.length;
+            const done = appData.flashcards.filter(c => c.mastered).length;
+            const pct = total > 0 ? Math.round((done / total) * 100) : 0;
+            document.getElementById('masteryFraction').textContent = `${done} / ${total} thẻ (${pct}%)`;
+            document.getElementById('masteryProgressBar').style.width = `${pct}%`;
+        }
+
+        function jumpToPersonaFromCard(event, group) {
+            event.stopPropagation();
+            switchTab('ai-mentor');
+            if (group === 'K6_DONGTHOAI') selectPersona('demen');
+            else if (group === 'K9_THONOM') selectPersona('thuykieu');
+            else selectPersona('covan');
+        }
+
+        // --- TRẠM 2: ESCAPE ROOM & SPEED SORTING ---
+        function switchGameMode(mode) {
+            const escapeDiv = document.getElementById('gameMode-escape');
+            const speedDiv = document.getElementById('gameMode-speed');
+            const escapeBtn = document.getElementById('modeBtn-escape');
+            const speedBtn = document.getElementById('modeBtn-speed');
+
+            if (mode === 'escape') {
+                escapeDiv.classList.remove('hidden');
+                speedDiv.classList.add('hidden');
+                escapeBtn.className = "px-4 py-2.5 rounded-xl font-extrabold text-xs sm:text-sm bg-gradient-to-r from-cyan-400 to-blue-500 text-slate-950 shadow transition flex items-center gap-2";
+                speedBtn.className = "px-4 py-2.5 rounded-xl font-bold text-xs sm:text-sm text-slate-300 hover:bg-slate-800 transition flex items-center gap-2";
+            } else {
+                escapeDiv.classList.add('hidden');
+                speedDiv.classList.remove('hidden');
+                speedBtn.className = "px-4 py-2.5 rounded-xl font-extrabold text-xs sm:text-sm bg-amber-400 text-slate-950 shadow transition flex items-center gap-2";
+                escapeBtn.className = "px-4 py-2.5 rounded-xl font-bold text-xs sm:text-sm text-slate-300 hover:bg-slate-800 transition flex items-center gap-2";
+            }
+        }
+
+        function getFilteredEscapeQuestions() {
+            const list = appData.escapeQuestions.filter(q => globalFilter === 'ALL' || q.group === globalFilter);
+            return list.length > 0 ? list : appData.escapeQuestions;
+        }
+
+        function renderEscapeGame() {
+            const questions = getFilteredEscapeQuestions();
+            const stationsList = document.getElementById('escapeStationsList');
+
+            stationsList.innerHTML = questions.map((q, idx) => {
+                let statusStyle = "bg-slate-950/60 border-slate-800 text-slate-400";
+                let badge = `<span class="w-6 h-6 rounded-full bg-slate-800 text-xs flex items-center justify-center font-bold">${idx + 1}</span>`;
+
+                if (idx < currentStationIndex) {
+                    statusStyle = "bg-emerald-500/15 border-emerald-500/40 text-emerald-300";
+                    badge = `<span class="w-6 h-6 rounded-full bg-emerald-400 text-slate-950 text-xs flex items-center justify-center font-bold"><i class="fa-solid fa-check"></i></span>`;
+                } else if (idx === currentStationIndex) {
+                    statusStyle = "bg-cyan-500/20 border-cyan-400 text-white font-bold";
+                    badge = `<span class="w-6 h-6 rounded-full bg-cyan-400 text-slate-950 text-xs flex items-center justify-center font-extrabold">${idx + 1}</span>`;
+                }
+
+                return `
+                    <div onclick="jumpToStation(${idx})" class="cursor-pointer flex items-center justify-between p-2.5 rounded-xl border ${statusStyle} text-xs transition hover:border-cyan-400/60">
+                        <div class="flex items-center gap-2.5 truncate">
+                            ${badge}
+                            <span class="truncate">${q.stationName}</span>
+                        </div>
+                    </div>
+                `;
+            }).join('');
+
+            document.getElementById('escapeStreakBadge').textContent = `🔥 Chuỗi: ${escapeStreak}`;
+
+            if (currentStationIndex >= questions.length) {
+                document.getElementById('escapeActiveContainer').classList.add('hidden');
+                document.getElementById('escapeVictoryContainer').classList.remove('hidden');
+                document.getElementById('treasureChestIcon').textContent = '💎';
+                document.getElementById('treasureStatusText').textContent = 'Rương Báu Đã Mở Khóa!';
+                document.getElementById('victoryCodename').textContent = currentCodename;
+                document.getElementById('victoryCorrectCount').textContent = `${firstTryCorrectCount}/${questions.length}`;
+                playTone('victory');
+                return;
+            }
+
+            document.getElementById('escapeActiveContainer').classList.remove('hidden');
+            document.getElementById('escapeVictoryContainer').classList.add('hidden');
+
+            const currentQ = questions[currentStationIndex];
+            stationAnswered = false;
+            stationAttemptedWrong = false;
+
+            document.getElementById('escapeStationBadge').textContent = `TRẠM ${currentStationIndex + 1} / ${questions.length}`;
+            document.getElementById('escapeTopicBadge').textContent = currentQ.topic;
+            document.getElementById('escapeContextBox').innerHTML = currentQ.context.replace(/\n/g, '<br>');
+            document.getElementById('escapeQuestionText').textContent = currentQ.question;
+
+            document.getElementById('escapeHintBox').classList.add('hidden');
+            document.getElementById('escapeHintContent').textContent = currentQ.hint;
+            document.getElementById('escapeFeedbackBox').classList.add('hidden');
+
+            document.getElementById('escapeOptionsGrid').innerHTML = currentQ.options.map((opt, idx) => `
+                <button onclick="selectEscapeAnswer(${idx})" id="escapeOpt-${idx}" class="w-full text-left p-4 rounded-2xl border border-slate-700 bg-slate-950/80 hover:border-cyan-400 font-semibold text-xs sm:text-sm text-slate-200 transition flex items-center justify-between">
+                    <span>${opt}</span>
+                    <i class="fa-regular fa-circle text-slate-500"></i>
+                </button>
+            `).join('');
+        }
+
+        function jumpToStation(idx) {
+            currentStationIndex = idx;
+            renderEscapeGame();
+        }
+
+        function showEscapeHint() {
+            playTone('flip');
+            document.getElementById('escapeHintBox').classList.remove('hidden');
+        }
+
+        function selectEscapeAnswer(selectedIndex) {
+            if (stationAnswered) return;
+            const questions = getFilteredEscapeQuestions();
+            const currentQ = questions[currentStationIndex];
+            const btn = document.getElementById(`escapeOpt-${selectedIndex}`);
+            const feedbackBox = document.getElementById('escapeFeedbackBox');
+
+            if (selectedIndex === currentQ.correctIndex) {
+                stationAnswered = true;
+                playTone('correct');
+                btn.className = "w-full text-left p-4 rounded-2xl border-2 border-emerald-400 bg-emerald-500/20 font-extrabold text-xs sm:text-sm text-emerald-200 flex items-center justify-between";
+                btn.innerHTML = `<span>${currentQ.options[selectedIndex]}</span><i class="fa-solid fa-circle-check text-emerald-400 text-lg"></i>`;
+
+                const earned = stationAttemptedWrong ? 10 : 20;
+                if (!stationAttemptedWrong) {
+                    firstTryCorrectCount++;
+                    escapeStreak++;
+                }
+                addSparkPoints(earned);
+
+                feedbackBox.className = "rounded-2xl p-5 border border-emerald-400/50 bg-emerald-500/15 text-emerald-100 space-y-3";
+                document.getElementById('escapeFeedbackTitle').innerHTML = `<i class="fa-solid fa-unlock-keyhole text-emerald-400"></i> Mở khóa thành công!`;
+                document.getElementById('escapePointAward').textContent = `+${earned} Spark`;
+                document.getElementById('escapeExplanationText').textContent = currentQ.explanation;
+                feedbackBox.classList.remove('hidden');
+                document.getElementById('escapeStreakBadge').textContent = `🔥 Chuỗi: ${escapeStreak}`;
+            } else {
+                stationAttemptedWrong = true;
+                escapeStreak = 0;
+                playTone('wrong');
+                btn.className = "w-full text-left p-4 rounded-2xl border-2 border-rose-500 bg-rose-500/20 font-semibold text-xs sm:text-sm text-rose-200 flex items-center justify-between opacity-80";
+                btn.innerHTML = `<span>${currentQ.options[selectedIndex]}</span><i class="fa-solid fa-circle-xmark text-rose-400 text-lg"></i>`;
+                document.getElementById('escapeStreakBadge').textContent = `🔥 Chuỗi: 0`;
+                showEscapeHint();
+                showToast("Chưa đúng rồi! Hãy đọc Gợi ý mở đường của AI bên trên nhé.");
+            }
+        }
+
+        function nextEscapeStation() {
+            currentStationIndex++;
+            renderEscapeGame();
+        }
+
+        function restartEscapeGame() {
+            currentStationIndex = 0;
+            escapeStreak = 0;
+            firstTryCorrectCount = 0;
+            document.getElementById('treasureChestIcon').textContent = '🔒';
+            document.getElementById('treasureStatusText').textContent = 'Rương Báu Ngữ Văn Đang Khóa';
+            renderEscapeGame();
+        }
+
+        // --- SPEED SORTING 60s ---
+        function startSpeedGame() {
+            if (speedTimer) clearInterval(speedTimer);
+            speedTimeLeft = 60;
+            speedScore = 0;
+            currentSpeedItemIndex = 0;
+            isSpeedPlaying = true;
+            appData.speedItems.sort(() => Math.random() - 0.5);
+
+            document.getElementById('speedScoreDisplay').textContent = speedScore;
+            document.getElementById('speedTimerDisplay').textContent = `${speedTimeLeft}s`;
+            document.getElementById('speedButtonsContainer').classList.remove('opacity-50', 'pointer-events-none');
+            showCurrentSpeedCard();
+
+            speedTimer = setInterval(() => {
+                speedTimeLeft--;
+                document.getElementById('speedTimerDisplay').textContent = `${speedTimeLeft}s`;
+                if (speedTimeLeft <= 0) endSpeedGame();
+            }, 1000);
+        }
+
+        function showCurrentSpeedCard() {
+            const item = appData.speedItems[currentSpeedItemIndex % appData.speedItems.length];
+            document.getElementById('speedCardCounter').textContent = `Thử thách #${currentSpeedItemIndex + 1}`;
+            document.getElementById('speedQuoteDisplay').textContent = item.quote;
+        }
+
+        function submitSpeedChoice(chosenCategory) {
+            if (!isSpeedPlaying) return;
+            const currentItem = appData.speedItems[currentSpeedItemIndex % appData.speedItems.length];
+            const toastEl = document.getElementById('speedInstantToast');
+
+            if (chosenCategory === currentItem.category) {
+                playTone('correct');
+                speedScore += 15;
+                addSparkPoints(15);
+                document.getElementById('speedScoreDisplay').textContent = speedScore;
+                toastEl.className = "text-xs font-extrabold text-emerald-400 h-5";
+                toastEl.textContent = "✓ Chính xác! +15 điểm";
+            } else {
+                playTone('wrong');
+                toastEl.className = "text-xs font-extrabold text-rose-400 h-5";
+                toastEl.textContent = `✗ Đáp án đúng là: ${currentItem.category}`;
+            }
+            currentSpeedItemIndex++;
+            showCurrentSpeedCard();
+        }
+
+        function endSpeedGame() {
+            clearInterval(speedTimer);
+            isSpeedPlaying = false;
+            playTone('victory');
+            document.getElementById('speedButtonsContainer').classList.add('opacity-50', 'pointer-events-none');
+            document.getElementById('speedCardCounter').textContent = "Hoàn thành 60 giây!";
+            document.getElementById('speedQuoteDisplay').innerHTML = `🎉 Chúc mừng <strong>${currentCodename}</strong> đạt <strong class="text-amber-300">${speedScore} điểm</strong>!`;
+        }
+
+        // --- TRẠM 3: ĐỐI THOẠI 8 NHÂN VẬT AI & 48+ GỢI Ý ---
+        function renderPersonaList() {
+            const container = document.getElementById('personaList');
+            container.innerHTML = Object.keys(PERSONAS).map(key => {
+                const p = PERSONAS[key];
+                const isSelected = key === currentPersonaKey;
+                return `
+                    <button onclick="selectPersona('${key}')" class="w-full p-3 rounded-2xl border ${isSelected ? 'border-cyan-400 bg-cyan-500/15' : 'border-slate-800 bg-slate-950/60 hover:bg-slate-800/70'} text-left flex items-center gap-3 transition">
+                        <div class="w-11 h-11 rounded-xl bg-slate-900 border border-slate-700 flex items-center justify-center text-xl shrink-0">
+                            ${p.avatar}
+                        </div>
+                        <div class="min-w-0 flex-1">
+                            <div class="flex items-center justify-between gap-1">
+                                <span class="font-extrabold text-xs sm:text-sm text-white truncate">${p.name}</span>
+                            </div>
+                            <span class="inline-block text-[10px] font-bold text-cyan-300 bg-cyan-500/10 px-2 py-0.5 rounded mt-0.5">${p.badge}</span>
+                        </div>
+                    </button>
+                `;
+            }).join('');
+        }
+
+        function selectPersona(key) {
+            currentPersonaKey = key;
+            const p = PERSONAS[key];
+            renderPersonaList();
+
+            document.getElementById('chatHeaderAvatar').textContent = p.avatar;
+            document.getElementById('chatHeaderName').textContent = p.name;
+            document.getElementById('chatHeaderRole').textContent = p.role;
+
+            const promptsContainer = document.getElementById('quickPromptsContainer');
+            promptsContainer.innerHTML = p.prompts.map((item, idx) => `
+                <button onclick="triggerQuickPrompt(${idx})" class="text-xs font-semibold bg-slate-900 hover:bg-cyan-400 hover:text-slate-950 text-cyan-200 px-3 py-1.5 rounded-xl border border-cyan-500/30 transition text-left">
+                    💬 ${item.q}
+                </button>
+            `).join('');
+
+            clearChatHistory();
+        }
+
+        function clearChatHistory() {
+            const p = PERSONAS[currentPersonaKey];
+            const box = document.getElementById('chatMessagesBox');
+            box.innerHTML = '';
+            appendChatMessage('ai', p.greeting);
+        }
+
+        function triggerQuickPrompt(idx) {
+            const p = PERSONAS[currentPersonaKey];
+            const item = p.prompts[idx];
+            if (!item) return;
+            playTone('flip');
+            appendChatMessage('user', item.q);
+            setTimeout(() => {
+                playTone('correct');
+                appendChatMessage('ai', item.a);
+                addSparkPoints(10);
+            }, 250);
+        }
+
+        function handleCustomChatSubmit(e) {
+            e.preventDefault();
+            const input = document.getElementById('customChatInput');
+            const text = input.value.trim();
+            if (!text) return;
+            input.value = '';
+            appendChatMessage('user', text);
+            setTimeout(() => {
+                const reply = generateSmartLiteratureReply(text);
+                playTone('correct');
+                appendChatMessage('ai', reply);
+                addSparkPoints(10);
+            }, 300);
+        }
+
+        function generateSmartLiteratureReply(query) {
+            const q = query.toLowerCase();
+            // Match inside current persona's prompt bank first
+            const p = PERSONAS[currentPersonaKey];
+            for (const item of p.prompts) {
+                if (item.q.toLowerCase().includes(q) || q.includes('ngoại hình') && item.q.includes('Ngoại hình')) {
+                    return item.a;
+                }
+            }
+            if (q.includes('đồng thoại') || q.includes('dế mèn') || q.includes('dế choắt') || q.includes('chị cốc')) {
+                return "Trong **Truyện đồng thoại (Ngữ văn 6)** như *Bài học đường đời đầu tiên* (Tô Hoài) hay *Giọt sương đêm* (Trần Đức Tiến), nhân vật là các loài vật được **nhân hóa**: vừa mang đặc điểm sinh học tự nhiên của loài vật, vừa thể hiện tâm lý, tính cách con người. Qua sự việc Dế Mèn trêu chị Cốc dẫn đến cái chết của Dế Choắt, tác phẩm gửi gắm bài học sâu sắc về lòng khiêm tốn và sự biết nghĩ trước khi hành động!";
+            }
+            if (q.includes('thơ nôm') || q.includes('truyện kiều') || q.includes('lục vân tiên') || q.includes('ngưng bích')) {
+                return "**Truyện thơ Nôm (Ngữ văn 9)** là thể loại tự sự bằng thơ viết bằng chữ Nôm (chủ yếu thể lục bát), có kết cấu 3 phần: **Gặp gỡ – Tai biến – Đoàn tụ**. Nếu *Truyện Lục Vân Tiên* (Nguyễn Đình Chiểu) khắc họa nhân vật anh hùng trọng nghĩa khinh tài qua hành động và đối thoại mộc mạc, thì *Truyện Kiều* (Nguyễn Du) đạt đỉnh cao Truyện thơ Nôm bác học với nghệ thuật **tả cảnh ngụ tình** và **độc thoại nội tâm**!";
+            }
+            if (q.includes('giọt sương') || q.includes('bọ dừa') || q.includes('bờ giậu')) {
+                return "Trong truyện đồng thoại **Giọt sương đêm** (Trần Đức Tiến), hình ảnh giọt sương lạnh toát rơi trúng cổ Bọ Dừa dưới vòm lá trúc đã đánh thức nỗi nhớ quê hương nguồn cội của người xa xứ, giúp Bọ Dừa quyết định trở về quê nhà ngay sáng hôm sau.";
+            }
+            return `Cảm ơn câu hỏi rất sâu sắc của **${currentCodename}** dành cho **${p.name}**! Khi tìm hiểu về *"${query}"*, em hãy bấm thêm các thẻ gợi ý bên dưới hoặc kết nối đặc điểm nghệ thuật của thể loại (Truyện đồng thoại / Truyện thơ Nôm) với thông điệp nhân văn của tác giả nhé!`;
+        }
+
+        function appendChatMessage(sender, text) {
+            const box = document.getElementById('chatMessagesBox');
+            const formatted = text.replace(/\*\*(.*?)\*\*/g, '<strong class="text-cyan-300">$1</strong>').replace(/\*(.*?)\*/g, '<em class="text-amber-200">$1</em>').replace(/\n/g, '<br>');
+            const p = PERSONAS[currentPersonaKey];
+
+            const html = sender === 'ai'
+                ? `
+                <div class="flex items-start gap-3">
+                    <div class="w-9 h-9 rounded-xl bg-slate-900 border border-cyan-400/40 flex items-center justify-center text-base shrink-0">${p.avatar}</div>
+                    <div class="bg-slate-900/95 border border-slate-700 rounded-2xl rounded-tl-none p-4 text-xs sm:text-sm text-slate-200 leading-relaxed max-w-[88%] shadow">
+                        <div class="text-[11px] font-bold text-cyan-400 mb-1">${p.name}</div>
+                        ${formatted}
+                    </div>
+                </div>
+                `
+                : `
+                <div class="flex items-start justify-end gap-3">
+                    <div class="bg-gradient-to-r from-cyan-500 to-blue-600 text-slate-950 font-semibold rounded-2xl rounded-tr-none p-3.5 text-xs sm:text-sm leading-relaxed max-w-[82%] shadow">
+                        ${formatted}
+                    </div>
+                </div>
+                `;
+            box.insertAdjacentHTML('beforeend', html);
+            box.scrollTop = box.scrollHeight;
+        }
+
+        // --- TRẠM 4: GÓC GIÁO VIÊN ---
+        function updateMasterPromptPreview() {
+            const subj = document.getElementById('promptSubjectInput').value || 'Ngữ văn';
+            document.getElementById('masterPromptTextarea').value = `Đóng vai Chuyên gia Thiết kế Học liệu Số tại Hệ thống Giáo dục Sky-Line.
+Tôi đang dạy chuyên đề: [${subj}].
+Dựa vào văn bản bài học tôi cung cấp, hãy tạo bộ dữ liệu JSON chuẩn cho ứng dụng "SKY-LINE VĂN HỌC SPARK" gồm:
+1. 06 Thẻ nhớ 3D (flashcards): group, category, title, subtitle, definition (chuẩn Tri thức ngữ văn), example (dẫn chứng SGK), aiTip (mẹo ghi nhớ nhanh).
+2. 06 Câu hỏi Giải mã Mật thư (escapeQuestions): stationName, topic, context, question, options (4 đáp án A, B, C, D), correctIndex, hint (gợi ý tư duy khi chọn sai), explanation (giải thích chi tiết).
+Đảm bảo chuẩn chương trình GDPT 2018 và tuân thủ an toàn dữ liệu học sinh.`;
+        }
+
+        function copyMasterPrompt() {
+            const textarea = document.getElementById('masterPromptTextarea');
+            textarea.select();
+            document.execCommand('copy');
+            playTone('correct');
+            showToast("Đã sao chép Khuôn lệnh AI! Cô có thể dán ngay vào Gemini.");
+        }
+
+        function handleQuickAddCard(e) {
+            e.preventDefault();
+            const [group, category] = document.getElementById('newCardGroup').value.split('|');
+            const title = document.getElementById('newCardTitle').value.trim();
+            const def = document.getElementById('newCardDef').value.trim();
+            const ex = document.getElementById('newCardExample').value.trim();
+
+            appData.flashcards.unshift({
+                id: 'custom_' + Date.now(),
+                group,
+                category,
+                title,
+                subtitle: "Học liệu Giáo viên bổ sung",
+                definition: def,
+                example: ex,
+                aiTip: "Ghi nhớ từ khóa cốt lõi để vận dụng vào phần Đọc hiểu & Viết.",
+                mastered: false
+            });
+
+            e.target.reset();
+            setGlobalFilter('ALL');
+            switchTab('review');
+            playTone('correct');
+            showToast(`Đã thêm thẻ "${title}" vào đầu Trạm 1!`);
+        }
+
+        function loadSubjectPreset(name) {
+            if (name === 'lichsu') {
+                appData = JSON.parse(JSON.stringify(HISTORY_PRESET));
+                showToast("⚡ Đã chuyển sang Bộ đề Lịch Sử trong 5 giây!");
+            } else {
+                appData = JSON.parse(JSON.stringify(LITERATURE_PRESET));
+                showToast("📚 Đã khôi phục kho dữ liệu Ngữ Văn 6 & 9 (Đồng thoại + Thơ Nôm)!");
+            }
+            document.getElementById('appSubjectTitle').textContent = appData.subjectTitle;
+            document.getElementById('appSubjectSubtitle').textContent = appData.subjectSubtitle;
+            setGlobalFilter('ALL');
+            switchTab('review');
+        }
+
+        function importCustomJSON() {
+            const raw = document.getElementById('jsonImportTextarea').value.trim();
+            if (!raw) return showToast("Vui lòng dán mã JSON trước!");
+            try {
+                const parsed = JSON.parse(raw);
+                if (parsed.flashcards) appData.flashcards = parsed.flashcards;
+                if (parsed.escapeQuestions) appData.escapeQuestions = parsed.escapeQuestions;
+                renderFlashcards();
+                renderEscapeGame();
+                playTone('victory');
+                showToast("Đã nạp bộ dữ liệu mới thành công!");
+                switchTab('review');
+            } catch (err) {
+                playTone('wrong');
+                showToast("Mã JSON chưa đúng định dạng!");
+            }
+        }
+
+        function exportCurrentJSON() {
+            const str = JSON.stringify(appData, null, 2);
+            const area = document.getElementById('jsonImportTextarea');
+            area.value = str;
+            area.select();
+            document.execCommand('copy');
+            showToast("Đã xuất & sao chép toàn bộ JSON học liệu!");
+        }
+
+        function openSafetyModal() {
+            const m = document.getElementById('safetyModal');
+            m.classList.remove('hidden');
+            m.classList.add('flex');
+        }
+
+        function closeSafetyModal() {
+            const m = document.getElementById('safetyModal');
+            m.classList.add('hidden');
+            m.classList.remove('flex');
+        }
+
+        let toastTimer = null;
+        function showToast(msg) {
+            const t = document.getElementById('toastNotification');
+            document.getElementById('toastMessage').textContent = msg;
+            t.classList.remove('hidden');
+            if (toastTimer) clearTimeout(toastTimer);
+            toastTimer = setTimeout(() => t.classList.add('hidden'), 3200);
+        }
+
+        function initApp() {
+            renderFlashcards();
+            renderEscapeGame();
+            selectPersona('demen');
+            updateMasterPromptPreview();
+        }
+
+        if (document.readyState === 'loading') {
+            document.addEventListener('DOMContentLoaded', initApp);
+        } else {
+            initApp();
+        }
+    </script>
+</body>
+</html>
